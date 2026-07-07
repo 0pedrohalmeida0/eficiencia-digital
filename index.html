@@ -7,10 +7,16 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ==========================================================================
+           FUNDAMENTOS DE UI/UX APLICADOS:
+           1. Tipografia: Fonte 'Inter' (alta legibilidade e clean).
+           2. Hierarquia Visual: Títulos com maior peso visual, textos de apoio mais sutis.
+           3. Espaçamento (Whitespace): Margens amplas para evitar carga cognitiva (respiro).
+           4. Cores: Paleta de contraste (fundo claro, textos em cinza chumbo) e azul tech.
+           5. Feedback Visual: Efeitos de 'hover' sutis (elevação) para mostrar interatividade.
+           ========================================================================== */
 
-        body.pt-active .lang-en { display: none !important; }
-        body.en-active .lang-pt { display: none !important; }
-
+        /* --- Variáveis Globais (Design Tokens) --- */
         :root {
             --primary-color: #2563eb; 
             --primary-hover: #1d4ed8;
@@ -26,6 +32,7 @@
             --transition: all 0.3s ease;
         }
 
+        /* --- Reset & Base --- */
         * {
             margin: 0;
             padding: 0;
@@ -44,6 +51,7 @@
 
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
+        .lang-en { display: none; }
 
         .container {
             max-width: 1200px;
@@ -51,7 +59,7 @@
             padding: 0 24px;
         }
 
-        /* --- Navegação --- */
+        /* --- Navegação (Glassmorphism sutil) --- */
         nav {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(8px);
@@ -156,7 +164,7 @@
             box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
         }
 
-        /* --- Serviços --- */
+        /* --- Serviços (Cards) --- */
         .services {
             padding: 100px 0;
             background-color: var(--bg-color);
@@ -305,8 +313,7 @@
         }
     </style>
 </head>
-
-<body class="pt-active">
+<body>
 
     <!-- Navegação -->
     <nav>
@@ -374,7 +381,7 @@
                     <p class="lang-en">Development of web management systems for student control, structuring of educational portals, class scheduling, and backend logical data processing.</p>
                 </div>
 
-                <!-- Card 3 -->
+                <!-- Card 3 (NOVO) -->
                 <div class="card">
                     <div class="card-icon"><i class="fas fa-store"></i></div>
                     <h3 class="lang-pt">Gestão Comercial</h3>
@@ -396,8 +403,8 @@
             
             <div class="pricing-box">
                 <i class="fas fa-handshake pricing-icon"></i>
-                <h3 class="lang-pt">De integrações simples (R$ 200) a sistemas completos (R$ 3.000)</h3>
-                <h3 class="lang-en">From simple integrations (US$ 40.00) to complete systems (US$ 600.00)</h3>
+                <h3 class="lang-pt">Projetos a partir de R$ 200 até R$ 1.200</h3>
+                <h3 class="lang-en">Projects from R$ 200 to R$ 1,200</h3>
                 <p class="lang-pt">Os valores são adaptáveis e negociáveis de acordo com a complexidade do projeto, o volume de dados tratados e os requisitos de integração da sua empresa. O foco é entregar o melhor custo-benefício para a sua operação.</p>
                 <p class="lang-en">Prices are flexible and negotiable depending on the project's complexity, data volume, and your company's integration requirements. The goal is to deliver the best cost-benefit for your operation.</p>
             </div>
@@ -405,31 +412,34 @@
     </section>
 
     <!-- Contato -->
-    <form id="contact-form" action="https://formspree.io/f/mjgqzpnw" method="POST">
-    <div class="form-group">
-        <label class="lang-pt">Nome</label>
-        <label class="lang-en">Name</label>
-        <input type="text" name="nome" required>
-    </div>
-    <div class="form-group">
-        <label class="lang-pt">E-mail</label>
-        <label class="lang-en">Email</label>
-        <input type="email" name="email" required>
-    </div>
-    <div class="form-group">
-        <label class="lang-pt">Mensagem</label>
-        <label class="lang-en">Message</label>
-        <textarea name="mensagem" rows="4" required></textarea>
-    </div>
-    
-    <button type="submit" id="submit-btn" class="btn btn-full">
-        <span class="lang-pt">Enviar Mensagem</span>
-        <span class="lang-en">Send Message</span>
-    </button>
-    
-    <!-- Mensagem de status oculta -->
-    <p id="form-status" style="margin-top: 15px; text-align: center; font-weight: 600; display: none;"></p>
-</form>
+    <section id="contato" class="contact">
+        <div class="container form-container">
+            <div class="section-header">
+                <h2 class="lang-pt">Vamos conversar?</h2>
+                <h2 class="lang-en">Let's Talk?</h2>
+                <p class="lang-pt">Preencha suas informações abaixo para entrarmos em contato.</p>
+                <p class="lang-en">Fill in your information below so we can get in touch.</p>
+            </div>
+            
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label class="lang-pt">Nome</label>
+                    <label class="lang-en">Name</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label class="lang-pt">E-mail</label>
+                    <label class="lang-en">Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label class="lang-pt">Mensagem</label>
+                    <label class="lang-en">Message</label>
+                    <textarea rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-full lang-pt">Enviar Mensagem</button>
+                <button type="submit" class="btn btn-full lang-en">Send Message</button>
+            </form>
         </div>
     </section>
 
@@ -441,60 +451,21 @@
     </footer>
 
     <script>
-    const form = document.getElementById("contact-form");
-    const statusMsg = document.getElementById("form-status");
-    const submitBtn = document.getElementById("submit-btn");
-
-    form.addEventListener("submit", async function (event) {
-        // Impede que a página recarregue ou redirecione
-        event.preventDefault();
-
-        // Altera visualmente o botão para mostrar que está carregando
-        const originalBtnContent = submitBtn.innerHTML;
-        submitBtn.innerHTML = "Enviando... / Sending...";
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = "0.7";
-        
-        const formData = new FormData(form);
-
-        try {
-            const response = await fetch(form.action, {
-                method: form.method,
-                body: formData,
-                headers: {
-                    'Accept': 'application/json' // Obriga o Formspree a não redirecionar
-                }
-            });
-
-            if (response.ok) {
-                // Sucesso
-                statusMsg.style.display = "block";
-                statusMsg.style.color = "#4ade80"; // Verde
-                statusMsg.innerHTML = "Mensagem enviada com sucesso! / Message sent successfully!";
-                form.reset(); // Limpa os campos
-            } else {
-                // Erro do Formspree
-                statusMsg.style.display = "block";
-                statusMsg.style.color = "#f87171"; // Vermelho
-                statusMsg.innerHTML = "Oops! Ocorreu um problema ao enviar. / Oops! There was a problem.";
-            }
-        } catch (error) {
-            // Erro de rede/internet
-            statusMsg.style.display = "block";
-            statusMsg.style.color = "#f87171";
-            statusMsg.innerHTML = "Erro de conexão. Tente novamente. / Connection error. Try again.";
-        } finally {
-            // Restaura o botão ao estado original após o envio
-            submitBtn.innerHTML = originalBtnContent;
-            submitBtn.disabled = false;
-            submitBtn.style.opacity = "1";
+        let currentLang = 'pt';
+        function toggleLanguage() {
+            const ptElements = document.querySelectorAll('.lang-pt');
+            const enElements = document.querySelectorAll('.lang-en');
             
-            // Esconde a mensagem depois de 5 segundos
-            setTimeout(() => {
-                statusMsg.style.display = "none";
-            }, 5000);
+            if (currentLang === 'pt') {
+                ptElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = 'block');
+                currentLang = 'en';
+            } else {
+                ptElements.forEach(el => el.style.display = 'block');
+                enElements.forEach(el => el.style.display = 'none');
+                currentLang = 'pt';
+            }
         }
-    });
-</script>
+    </script>
 </body>
 </html>
