@@ -7,15 +7,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ==========================================================================
-           CONTROLE DE IDIOMA (Correção aplicada aqui)
-           ========================================================================== */
+
         body.pt-active .lang-en { display: none !important; }
         body.en-active .lang-pt { display: none !important; }
 
-        /* ==========================================================================
-           FUNDAMENTOS DE UI/UX APLICADOS
-           ========================================================================== */
         :root {
             --primary-color: #2563eb; 
             --primary-hover: #1d4ed8;
@@ -56,7 +51,6 @@
             padding: 0 24px;
         }
 
-        /* --- Navegação --- */
         nav {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(8px);
@@ -116,7 +110,6 @@
         }
         .lang-btn:hover { background-color: #e2e8f0; }
 
-        /* --- Hero Section --- */
         .hero {
             padding: 160px 0 100px;
             background-color: var(--surface-color);
@@ -161,7 +154,6 @@
             box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
         }
 
-        /* --- Serviços --- */
         .services {
             padding: 100px 0;
             background-color: var(--bg-color);
@@ -222,7 +214,6 @@
             font-size: 1rem;
         }
 
-        /* --- Valores --- */
         .pricing {
             padding: 100px 0;
             background-color: var(--surface-color);
@@ -246,7 +237,6 @@
         .pricing-box h3 { font-size: 2rem; margin-bottom: 16px; }
         .pricing-box p { color: var(--text-muted); }
 
-        /* --- Contato --- */
         .contact {
             padding: 100px 0;
             background-color: var(--dark-surface);
@@ -301,16 +291,60 @@
             font-size: 0.875rem;
         }
 
-        /* --- Responsividade --- */
         @media (max-width: 768px) {
             .nav-links { display: none; } 
             .cards-grid { grid-template-columns: 1fr; }
             .pricing-box { padding: 32px 20px; }
             .hero { padding: 120px 0 80px; }
         }
+
+#socialmedia {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.contact-item {
+    background-color: var(--dark-surface-alt);
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid #334155;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: #f1f5f9;
+}
+
+.contact-item:hover {
+    border-color: var(--primary-color);
+    background-color: #243044;
+}
+
+#ou {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin: 25px 0;
+    letter-spacing: 2px;
+}
+
+#ou::before, #ou::after {
+    content: "";
+    height: 1px;
+    background: #334155;
+    flex: 1;
+    margin: 0 15px;
+    max-width: 60px;
+}
     </style>
 </head>
-<!-- Repare que agora o body carrega a classe do idioma padrão (pt-active) -->
+
 <body class="pt-active">
 
     <!-- Navegação -->
@@ -327,7 +361,7 @@
                 <a href="#contato" class="lang-pt">Contato</a>
                 <a href="#contato" class="lang-en">Contact</a>
                 
-                <a href="https://github.com/SEU-USUARIO-AQUI" target="_blank" class="github-link">
+                <a href="https://github.com/0pedrohalmeida0" target="_blank" class="github-link">
                     <i class="fab fa-github"></i>
                     <span class="lang-pt">Meu Portfólio</span>
                     <span class="lang-en">My Portfolio</span>
@@ -402,41 +436,57 @@
             <div class="pricing-box">
                 <i class="fas fa-handshake pricing-icon"></i>
                 <h3 class="lang-pt">De integrações simples (R$ 200) a sistemas completos (R$ 3.000)</h3>
-                <h3 class="lang-en">From simple integrations (US$ 40.00) to complete systems (US$ 600.00)</h3>
+                <h3 class="lang-en">From simple integrations (US$ 40) to complete systems (US$ 600)</h3>
                 <p class="lang-pt">Os valores são adaptáveis e negociáveis de acordo com a complexidade do projeto, o volume de dados tratados e os requisitos de integração da sua empresa. O foco é entregar o melhor custo-benefício para a sua operação.</p>
                 <p class="lang-en">Prices are flexible and negotiable depending on the project's complexity, data volume, and your company's integration requirements. The goal is to deliver the best cost-benefit for your operation.</p>
             </div>
         </div>
     </section>
-
+</div>
     <!-- Contato -->
     <section id="contato" class="contact">
         <div class="container form-container">
             <div class="section-header">
                 <h2 class="lang-pt">Vamos conversar?</h2>
                 <h2 class="lang-en">Let's Talk?</h2>
-                <p class="lang-pt">Preencha suas informações abaixo para entrarmos em contato.</p>
-                <p class="lang-en">Fill in your information below so we can get in touch.</p>
             </div>
-            
-            <form action="#" method="POST">
+                
+<div id="socialmedia">
+    <a href="https://wa.me/5551991803676" target="_blank" class="contact-item">
+        <i class="fab fa-whatsapp" style="color: #25d366;"></i>
+        <span class="lang-pt">WhatsApp: (51) 991803676</span>
+        <span class="lang-en">WhatsApp: +55 (51) 991803676</span>
+    </a>
+    
+    <a href="mailto:phdealmeida3@gmail.com" class="contact-item">
+        <i class="fas fa-envelope" style="color: #ffffff;"></i>
+        <span>E-mail: phdealmeida3@gmail.com</span>
+    </a>
+</div>
+
+<div id="ou">
+    <p class="lang-pt">OU</p>
+    <p class="lang-en">OR</p>
+</div>
+                        
+            <form id="contact-form" action="https://formspree.io/f/mjgqzpnw" method="POST">
                 <div class="form-group">
                     <label class="lang-pt">Nome</label>
                     <label class="lang-en">Name</label>
-                    <input type="text" required>
+                    <input type="text" name="nome" required>
                 </div>
                 <div class="form-group">
                     <label class="lang-pt">E-mail</label>
                     <label class="lang-en">Email</label>
-                    <input type="email" required>
+                    <input type="email" name="email" required>
                 </div>
                 <div class="form-group">
                     <label class="lang-pt">Mensagem</label>
                     <label class="lang-en">Message</label>
-                    <textarea rows="4" required></textarea>
+                    <textarea name="mensagem" rows="4" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-full lang-pt">Enviar Mensagem</button>
-                <button type="submit" class="btn btn-full lang-en">Send Message</button>
+                <button type="submit" id="submit-btn" class="btn btn-full lang-pt">Enviar Mensagem</button>
+                <button type="submit" id="submit-btn" class="btn btn-full lang-en">Send Message</button>
             </form>
         </div>
     </section>
@@ -448,8 +498,56 @@
         </div>
     </footer>
 
-    <!-- Novo Script Mais Limpo e Rápido -->
     <script>
+    const form = document.getElementById("contact-form");
+    const statusMsg = document.getElementById("form-status");
+    const submitBtn = document.getElementById("submit-btn");
+
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const originalBtnContent = submitBtn.innerHTML;
+        submitBtn.innerHTML = "Enviando... / Sending...";
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = "0.7";
+        
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json' // Obriga o Formspree a não redirecionar
+                }
+            });
+
+            if (response.ok) {
+                statusMsg.style.display = "block";
+                statusMsg.style.color = "#4ade80"; // Verde
+                statusMsg.innerHTML = "Mensagem enviada com sucesso! / Message sent successfully!";
+                form.reset(); // Limpa os campos
+            } else {
+                statusMsg.style.display = "block";
+                statusMsg.style.color = "#f87171"; // Vermelho
+                statusMsg.innerHTML = "Oops! Ocorreu um problema ao enviar. / Oops! There was a problem.";
+            }
+        } catch (error) {
+            statusMsg.style.display = "block";
+            statusMsg.style.color = "#f87171";
+            statusMsg.innerHTML = "Erro de conexão. Tente novamente. / Connection error. Try again.";
+        } finally {
+            submitBtn.innerHTML = originalBtnContent;
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
+            
+            setTimeout(() => {
+                statusMsg.style.display = "none";
+            }, 5000);
+        }
+    });
+</script>
+<script>
         function toggleLanguage() {
             const body = document.body;
             if (body.classList.contains('pt-active')) {
