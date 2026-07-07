@@ -8,15 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* ==========================================================================
-           FUNDAMENTOS DE UI/UX APLICADOS:
-           1. Tipografia: Fonte 'Inter' (alta legibilidade e clean).
-           2. Hierarquia Visual: Títulos com maior peso visual, textos de apoio mais sutis.
-           3. Espaçamento (Whitespace): Margens amplas para evitar carga cognitiva (respiro).
-           4. Cores: Paleta de contraste (fundo claro, textos em cinza chumbo) e azul tech.
-           5. Feedback Visual: Efeitos de 'hover' sutis (elevação) para mostrar interatividade.
+           CONTROLE DE IDIOMA (Correção aplicada aqui)
            ========================================================================== */
+        body.pt-active .lang-en { display: none !important; }
+        body.en-active .lang-pt { display: none !important; }
 
-        /* --- Variáveis Globais (Design Tokens) --- */
+        /* ==========================================================================
+           FUNDAMENTOS DE UI/UX APLICADOS
+           ========================================================================== */
         :root {
             --primary-color: #2563eb; 
             --primary-hover: #1d4ed8;
@@ -32,7 +31,6 @@
             --transition: all 0.3s ease;
         }
 
-        /* --- Reset & Base --- */
         * {
             margin: 0;
             padding: 0;
@@ -51,7 +49,6 @@
 
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
-        .lang-en { display: none; }
 
         .container {
             max-width: 1200px;
@@ -59,7 +56,7 @@
             padding: 0 24px;
         }
 
-        /* --- Navegação (Glassmorphism sutil) --- */
+        /* --- Navegação --- */
         nav {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(8px);
@@ -164,7 +161,7 @@
             box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
         }
 
-        /* --- Serviços (Cards) --- */
+        /* --- Serviços --- */
         .services {
             padding: 100px 0;
             background-color: var(--bg-color);
@@ -313,7 +310,8 @@
         }
     </style>
 </head>
-<body>
+<!-- Repare que agora o body carrega a classe do idioma padrão (pt-active) -->
+<body class="pt-active">
 
     <!-- Navegação -->
     <nav>
@@ -381,7 +379,7 @@
                     <p class="lang-en">Development of web management systems for student control, structuring of educational portals, class scheduling, and backend logical data processing.</p>
                 </div>
 
-                <!-- Card 3 (NOVO) -->
+                <!-- Card 3 -->
                 <div class="card">
                     <div class="card-icon"><i class="fas fa-store"></i></div>
                     <h3 class="lang-pt">Gestão Comercial</h3>
@@ -403,8 +401,8 @@
             
             <div class="pricing-box">
                 <i class="fas fa-handshake pricing-icon"></i>
-                <h3 class="lang-pt">Projetos a partir de R$ 200 até R$ 1.200</h3>
-                <h3 class="lang-en">Projects from R$ 200 to R$ 1,200</h3>
+                <h3 class="lang-pt">De integrações simples (R$ 200) a sistemas completos (R$ 3.000)</h3>
+                <h3 class="lang-en">From simple integrations (US$ 40.00) to complete systems (US$ 600.00)</h3>
                 <p class="lang-pt">Os valores são adaptáveis e negociáveis de acordo com a complexidade do projeto, o volume de dados tratados e os requisitos de integração da sua empresa. O foco é entregar o melhor custo-benefício para a sua operação.</p>
                 <p class="lang-en">Prices are flexible and negotiable depending on the project's complexity, data volume, and your company's integration requirements. The goal is to deliver the best cost-benefit for your operation.</p>
             </div>
@@ -450,20 +448,14 @@
         </div>
     </footer>
 
+    <!-- Novo Script Mais Limpo e Rápido -->
     <script>
-        let currentLang = 'pt';
         function toggleLanguage() {
-            const ptElements = document.querySelectorAll('.lang-pt');
-            const enElements = document.querySelectorAll('.lang-en');
-            
-            if (currentLang === 'pt') {
-                ptElements.forEach(el => el.style.display = 'none');
-                enElements.forEach(el => el.style.display = 'block');
-                currentLang = 'en';
+            const body = document.body;
+            if (body.classList.contains('pt-active')) {
+                body.classList.replace('pt-active', 'en-active');
             } else {
-                ptElements.forEach(el => el.style.display = 'block');
-                enElements.forEach(el => el.style.display = 'none');
-                currentLang = 'pt';
+                body.classList.replace('en-active', 'pt-active');
             }
         }
     </script>
