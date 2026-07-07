@@ -7,15 +7,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ==========================================================================
-           CONTROLE DE IDIOMA (Correção aplicada aqui)
-           ========================================================================== */
+
         body.pt-active .lang-en { display: none !important; }
         body.en-active .lang-pt { display: none !important; }
 
-        /* ==========================================================================
-           FUNDAMENTOS DE UI/UX APLICADOS
-           ========================================================================== */
         :root {
             --primary-color: #2563eb; 
             --primary-hover: #1d4ed8;
@@ -310,7 +305,7 @@
         }
     </style>
 </head>
-<!-- Repare que agora o body carrega a classe do idioma padrão (pt-active) -->
+
 <body class="pt-active">
 
     <!-- Navegação -->
@@ -410,34 +405,31 @@
     </section>
 
     <!-- Contato -->
-    <section id="contato" class="contact">
-        <div class="container form-container">
-            <div class="section-header">
-                <h2 class="lang-pt">Vamos conversar?</h2>
-                <h2 class="lang-en">Let's Talk?</h2>
-                <p class="lang-pt">Preencha suas informações abaixo para entrarmos em contato.</p>
-                <p class="lang-en">Fill in your information below so we can get in touch.</p>
-            </div>
-            
-            <form action="#" method="POST">
-                <div class="form-group">
-                    <label class="lang-pt">Nome</label>
-                    <label class="lang-en">Name</label>
-                    <input type="text" required>
-                </div>
-                <div class="form-group">
-                    <label class="lang-pt">E-mail</label>
-                    <label class="lang-en">Email</label>
-                    <input type="email" required>
-                </div>
-                <div class="form-group">
-                    <label class="lang-pt">Mensagem</label>
-                    <label class="lang-en">Message</label>
-                    <textarea rows="4" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-full lang-pt">Enviar Mensagem</button>
-                <button type="submit" class="btn btn-full lang-en">Send Message</button>
-            </form>
+    <form id="contact-form" action="https://formspree.io/f/mjgqzpnw" method="POST">
+    <div class="form-group">
+        <label class="lang-pt">Nome</label>
+        <label class="lang-en">Name</label>
+        <input type="text" name="nome" required>
+    </div>
+    <div class="form-group">
+        <label class="lang-pt">E-mail</label>
+        <label class="lang-en">Email</label>
+        <input type="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label class="lang-pt">Mensagem</label>
+        <label class="lang-en">Message</label>
+        <textarea name="mensagem" rows="4" required></textarea>
+    </div>
+    
+    <button type="submit" id="submit-btn" class="btn btn-full">
+        <span class="lang-pt">Enviar Mensagem</span>
+        <span class="lang-en">Send Message</span>
+    </button>
+    
+    <!-- Mensagem de status oculta -->
+    <p id="form-status" style="margin-top: 15px; text-align: center; font-weight: 600; display: none;"></p>
+</form>
         </div>
     </section>
 
@@ -448,16 +440,61 @@
         </div>
     </footer>
 
-    <!-- Novo Script Mais Limpo e Rápido -->
     <script>
-        function toggleLanguage() {
-            const body = document.body;
-            if (body.classList.contains('pt-active')) {
-                body.classList.replace('pt-active', 'en-active');
+    const form = document.getElementById("contact-form");
+    const statusMsg = document.getElementById("form-status");
+    const submitBtn = document.getElementById("submit-btn");
+
+    form.addEventListener("submit", async function (event) {
+        // Impede que a página recarregue ou redirecione
+        event.preventDefault();
+
+        // Altera visualmente o botão para mostrar que está carregando
+        const originalBtnContent = submitBtn.innerHTML;
+        submitBtn.innerHTML = "Enviando... / Sending...";
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = "0.7";
+        
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json' // Obriga o Formspree a não redirecionar
+                }
+            });
+
+            if (response.ok) {
+                // Sucesso
+                statusMsg.style.display = "block";
+                statusMsg.style.color = "#4ade80"; // Verde
+                statusMsg.innerHTML = "Mensagem enviada com sucesso! / Message sent successfully!";
+                form.reset(); // Limpa os campos
             } else {
-                body.classList.replace('en-active', 'pt-active');
+                // Erro do Formspree
+                statusMsg.style.display = "block";
+                statusMsg.style.color = "#f87171"; // Vermelho
+                statusMsg.innerHTML = "Oops! Ocorreu um problema ao enviar. / Oops! There was a problem.";
             }
+        } catch (error) {
+            // Erro de rede/internet
+            statusMsg.style.display = "block";
+            statusMsg.style.color = "#f87171";
+            statusMsg.innerHTML = "Erro de conexão. Tente novamente. / Connection error. Try again.";
+        } finally {
+            // Restaura o botão ao estado original após o envio
+            submitBtn.innerHTML = originalBtnContent;
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
+            
+            // Esconde a mensagem depois de 5 segundos
+            setTimeout(() => {
+                statusMsg.style.display = "none";
+            }, 5000);
         }
-    </script>
+    });
+</script>
 </body>
 </html>
