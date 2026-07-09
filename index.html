@@ -74,6 +74,7 @@
             font-weight: 700;
             color: var(--primary-color);
             letter-spacing: -0.5px;
+            z-index: 101; /* Fica acima do menu mobile */
         }
 
         .nav-links {
@@ -108,7 +109,17 @@
             cursor: pointer;
             transition: var(--transition);
         }
+        
         .lang-btn:hover { background-color: #e2e8f0; }
+
+        /* Estilo do Botão Hambúrguer (Oculto no Desktop) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            cursor: pointer;
+            z-index: 101;
+        }
 
         .hero {
             padding: 160px 0 100px;
@@ -146,6 +157,7 @@
             box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
             cursor: pointer;
             border: none;
+            text-align: center;
         }
 
         .btn:hover {
@@ -282,6 +294,52 @@
 
         .btn-full { width: 100%; }
 
+        #socialmedia {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .contact-item {
+            background-color: var(--dark-surface-alt);
+            padding: 16px 20px;
+            border-radius: var(--radius-md);
+            border: 1px solid #334155;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+            color: #f1f5f9;
+            word-break: break-word; /* Evita que o email quebre o layout no mobile */
+        }
+
+        .contact-item:hover {
+            border-color: var(--primary-color);
+            background-color: #243044;
+        }
+
+        #ou {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin: 25px 0;
+            letter-spacing: 2px;
+        }
+
+        #ou::before, #ou::after {
+            content: "";
+            height: 1px;
+            background: #334155;
+            flex: 1;
+            margin: 0 15px;
+            max-width: 60px;
+        }
+
         /* --- Footer --- */
         footer {
             background-color: #020617;
@@ -291,57 +349,71 @@
             font-size: 0.875rem;
         }
 
+        /* =========================================
+           Otimizações Mobile (Media Queries)
+        ========================================= */
         @media (max-width: 768px) {
-            .nav-links { display: none; } 
-            .cards-grid { grid-template-columns: 1fr; }
+            /* Ativa o botão hambúrguer */
+            .menu-toggle { 
+                display: block; 
+            }
+            
+            /* Reposiciona e estiliza o menu para mobile */
+            .nav-links { 
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--surface-color);
+                flex-direction: column;
+                padding: 20px 0;
+                gap: 1.5rem;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                
+                /* Efeito de esconder/mostrar */
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-20px);
+                transition: var(--transition);
+            }
+
+            /* Classe adicionada via JS quando o menu está aberto */
+            .nav-links.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .nav-links a {
+                font-size: 1.125rem;
+                padding: 10px;
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .github-link {
+                justify-content: center;
+            }
+
+            /* Redução de espaçamentos (paddings) no mobile para melhor leitura */
+            .hero { padding: 120px 0 60px; }
+            .services { padding: 60px 0; }
+            .pricing { padding: 60px 0; }
+            .contact { padding: 60px 0; }
+            
+            .section-header { margin-bottom: 40px; }
+            .section-header h2 { font-size: 2rem; }
+
+            .cards-grid { grid-template-columns: 1fr; gap: 20px; }
+            
+            .card { padding: 30px 20px; }
+            
             .pricing-box { padding: 32px 20px; }
-            .hero { padding: 120px 0 80px; }
+            .pricing-box h3 { font-size: 1.5rem; }
+
+            .contact-item { font-size: 1rem; padding: 14px; }
         }
-
-#socialmedia {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin: 20px 0;
-}
-
-.contact-item {
-    background-color: var(--dark-surface-alt);
-    padding: 16px 20px;
-    border-radius: var(--radius-md);
-    border: 1px solid #334155;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 1.1rem;
-    color: #f1f5f9;
-}
-
-.contact-item:hover {
-    border-color: var(--primary-color);
-    background-color: #243044;
-}
-
-#ou {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    font-weight: 800;
-    font-size: 1.2rem;
-    margin: 25px 0;
-    letter-spacing: 2px;
-}
-
-#ou::before, #ou::after {
-    content: "";
-    height: 1px;
-    background: #334155;
-    flex: 1;
-    margin: 0 15px;
-    max-width: 60px;
-}
     </style>
 </head>
 
@@ -351,17 +423,23 @@
     <nav>
         <div class="container nav-content">
             <div class="logo">DevServices</div>
-            <div class="nav-links">
-                <a href="#servicos" class="lang-pt">Serviços</a>
-                <a href="#servicos" class="lang-en">Services</a>
+            
+            <!-- Ícone Menu Hambúrguer -->
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="nav-links" id="nav-links">
+                <a href="#servicos" class="lang-pt" onclick="closeMenu()">Serviços</a>
+                <a href="#servicos" class="lang-en" onclick="closeMenu()">Services</a>
                 
-                <a href="#valores" class="lang-pt">Valores</a>
-                <a href="#valores" class="lang-en">Pricing</a>
+                <a href="#valores" class="lang-pt" onclick="closeMenu()">Valores</a>
+                <a href="#valores" class="lang-en" onclick="closeMenu()">Pricing</a>
                 
-                <a href="#contato" class="lang-pt">Contato</a>
-                <a href="#contato" class="lang-en">Contact</a>
+                <a href="#contato" class="lang-pt" onclick="closeMenu()">Contato</a>
+                <a href="#contato" class="lang-en" onclick="closeMenu()">Contact</a>
                 
-                <a href="https://github.com/0pedrohalmeida0" target="_blank" class="github-link">
+                <a href="https://github.com/0pedrohalmeida0" target="_blank" class="github-link" onclick="closeMenu()">
                     <i class="fab fa-github"></i>
                     <span class="lang-pt">Meu Portfólio</span>
                     <span class="lang-en">My Portfolio</span>
@@ -435,14 +513,14 @@
             
             <div class="pricing-box">
                 <i class="fas fa-handshake pricing-icon"></i>
-                <h3 class="lang-pt">De integrações simples a sistemas completos (Valores a partir de R$ 200)  </h3>
-                <h3 class="lang-en">From simple integrations to complete systems (Prices starting from US$ 40)  </h3>
+                <h3 class="lang-pt">De integrações simples a sistemas completos (Valores a partir de R$ 200) </h3>
+                <h3 class="lang-en">From simple integrations to complete systems (Prices starting from US$ 40) </h3>
                 <p class="lang-pt">Os valores são adaptáveis e negociáveis de acordo com a complexidade do projeto, o volume de dados tratados e os requisitos de integração da sua empresa. O foco é entregar o melhor custo-benefício para a sua operação.</p>
                 <p class="lang-en">Prices are flexible and negotiable depending on the project's complexity, data volume, and your company's integration requirements. The goal is to deliver the best cost-benefit for your operation.</p>
             </div>
         </div>
     </section>
-</div>
+
     <!-- Contato -->
     <section id="contato" class="contact">
         <div class="container form-container">
@@ -451,23 +529,23 @@
                 <h2 class="lang-en">Let's Talk?</h2>
             </div>
                 
-<div id="socialmedia">
-    <a href="https://wa.me/5551991803676" target="_blank" class="contact-item">
-        <i class="fab fa-whatsapp" style="color: #25d366;"></i>
-        <span class="lang-pt">WhatsApp: (51) 991803676</span>
-        <span class="lang-en">WhatsApp: +55 (51) 991803676</span>
-    </a>
-    
-    <a href="mailto:phdealmeida3@gmail.com" class="contact-item">
-        <i class="fas fa-envelope" style="color: #ffffff;"></i>
-        <span>E-mail: phdealmeida3@gmail.com</span>
-    </a>
-</div>
+            <div id="socialmedia">
+                <a href="https://wa.me/5551991803676" target="_blank" class="contact-item">
+                    <i class="fab fa-whatsapp" style="color: #25d366;"></i>
+                    <span class="lang-pt">WhatsApp: (51) 9918-03676</span>
+                    <span class="lang-en">WhatsApp: +55 (51) 9918-03676</span>
+                </a>
+                
+                <a href="mailto:phdealmeida3@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope" style="color: #ffffff;"></i>
+                    <span>E-mail: phdealmeida3@gmail.com</span>
+                </a>
+            </div>
 
-<div id="ou">
-    <p class="lang-pt">OU</p>
-    <p class="lang-en">OR</p>
-</div>
+            <div id="ou">
+                <p class="lang-pt">OU</p>
+                <p class="lang-en">OR</p>
+            </div>
                         
             <form id="contact-form" action="https://formspree.io/f/mjgqzpnw" method="POST">
                 <div class="form-group">
@@ -485,9 +563,12 @@
                     <label class="lang-en">Message</label>
                     <textarea name="mensagem" rows="4" required></textarea>
                 </div>
-                <button type="submit" id="submit-btn" class="btn btn-full lang-pt">Enviar Mensagem</button>
-                <button type="submit" id="submit-btn" class="btn btn-full lang-en">Send Message</button>
+                <button type="submit" id="submit-btn" class="btn btn-full">
+                    <span class="lang-pt">Enviar Mensagem</span>
+                    <span class="lang-en">Send Message</span>
+                </button>
             </form>
+            <p id="form-status" style="margin-top: 15px; text-align: center; font-weight: 600; display: none;"></p>
         </div>
     </section>
 
@@ -498,56 +579,23 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
-    const form = document.getElementById("contact-form");
-    const statusMsg = document.getElementById("form-status");
-    const submitBtn = document.getElementById("submit-btn");
-
-    form.addEventListener("submit", async function (event) {
-        event.preventDefault();
-
-        const originalBtnContent = submitBtn.innerHTML;
-        submitBtn.innerHTML = "Enviando... / Sending...";
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = "0.7";
-        
-        const formData = new FormData(form);
-
-        try {
-            const response = await fetch(form.action, {
-                method: form.method,
-                body: formData,
-                headers: {
-                    'Accept': 'application/json' // Obriga o Formspree a não redirecionar
-                }
-            });
-
-            if (response.ok) {
-                statusMsg.style.display = "block";
-                statusMsg.style.color = "#4ade80"; // Verde
-                statusMsg.innerHTML = "Mensagem enviada com sucesso! / Message sent successfully!";
-                form.reset(); // Limpa os campos
-            } else {
-                statusMsg.style.display = "block";
-                statusMsg.style.color = "#f87171"; // Vermelho
-                statusMsg.innerHTML = "Oops! Ocorreu um problema ao enviar. / Oops! There was a problem.";
-            }
-        } catch (error) {
-            statusMsg.style.display = "block";
-            statusMsg.style.color = "#f87171";
-            statusMsg.innerHTML = "Erro de conexão. Tente novamente. / Connection error. Try again.";
-        } finally {
-            submitBtn.innerHTML = originalBtnContent;
-            submitBtn.disabled = false;
-            submitBtn.style.opacity = "1";
-            
-            setTimeout(() => {
-                statusMsg.style.display = "none";
-            }, 5000);
+        // Função para abrir/fechar o menu mobile
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
         }
-    });
-</script>
-<script>
+
+        // Função para fechar o menu ao clicar em um link (melhor UX no mobile)
+        function closeMenu() {
+            const navLinks = document.getElementById('nav-links');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        }
+
+        // Troca de idioma
         function toggleLanguage() {
             const body = document.body;
             if (body.classList.contains('pt-active')) {
@@ -555,7 +603,58 @@
             } else {
                 body.classList.replace('en-active', 'pt-active');
             }
+            // Fecha o menu mobile ao trocar o idioma (opcional)
+            closeMenu();
         }
+
+        // Script do Formulário
+        const form = document.getElementById("contact-form");
+        const statusMsg = document.getElementById("form-status");
+        const submitBtn = document.getElementById("submit-btn");
+
+        form.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const originalBtnContent = submitBtn.innerHTML;
+            submitBtn.innerHTML = "Enviando... / Sending...";
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.7";
+            
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    statusMsg.style.display = "block";
+                    statusMsg.style.color = "#4ade80"; // Verde
+                    statusMsg.innerHTML = "Mensagem enviada com sucesso! / Message sent successfully!";
+                    form.reset(); 
+                } else {
+                    statusMsg.style.display = "block";
+                    statusMsg.style.color = "#f87171"; // Vermelho
+                    statusMsg.innerHTML = "Oops! Ocorreu um problema ao enviar. / Oops! There was a problem.";
+                }
+            } catch (error) {
+                statusMsg.style.display = "block";
+                statusMsg.style.color = "#f87171";
+                statusMsg.innerHTML = "Erro de conexão. Tente novamente. / Connection error. Try again.";
+            } finally {
+                submitBtn.innerHTML = originalBtnContent;
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = "1";
+                
+                setTimeout(() => {
+                    statusMsg.style.display = "none";
+                }, 5000);
+            }
+        });
     </script>
 </body>
 </html>
