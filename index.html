@@ -3,658 +3,534 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevServices | Automação e Sistemas Inteligentes</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
+    <meta name="description" content="Pedro Henrique de Almeida - Full Stack Python Developer. Soluções web com Python, Django, automação de processos e bancos de dados relacionais.">
+    <meta name="keywords" content="python, django, desenvolvedor, automação, sistemas, gestão, full stack, APIs REST">
+    <meta name="author" content="Pedro Henrique de Almeida">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devservices.com/">
+    <meta property="og:title" content="Pedro Henrique de Almeida | Full Stack Python Developer">
+    <meta property="og:description" content="Soluções web com Python, Django e automação de processos para resolver problemas reais.">
+    <meta property="og:image" content="https://devservices.com/og-image.jpg">
 
-        body.pt-active .lang-en { display: none !important; }
-        body.en-active .lang-pt { display: none !important; }
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://devservices.com/">
+    <meta property="twitter:title" content="Pedro Henrique de Almeida | Full Stack Python Developer">
+    <meta property="twitter:description" content="Soluções web com Python, Django e automação de processos para resolver problemas reais.">
 
-        :root {
-            --primary-color: #2563eb; 
-            --primary-hover: #1d4ed8;
-            --bg-color: #f8fafc; 
-            --surface-color: #ffffff; 
-            --text-main: #0f172a; 
-            --text-muted: #64748b; 
-            --border-color: #e2e8f0;
-            --dark-surface: #0f172a;
-            --dark-surface-alt: #1e293b;
-            --radius-md: 8px;
-            --radius-lg: 16px;
-            --transition: all 0.3s ease;
-        }
+    <title>Pedro Henrique de Almeida | Full Stack Python Developer</title>
+    
+    <!-- Preconnect para performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link rel="stylesheet" href="style.css">
 
-        html { scroll-behavior: smooth; }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        nav {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--border-color);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            letter-spacing: -0.5px;
-            z-index: 101; /* Fica acima do menu mobile */
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            color: var(--text-muted);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover { color: var(--primary-color); }
-
-        .github-link {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-main) !important;
-        }
-
-        .lang-btn {
-            background-color: #f1f5f9;
-            color: var(--text-main);
-            border: none;
-            padding: 6px 12px;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .lang-btn:hover { background-color: #e2e8f0; }
-
-        /* Estilo do Botão Hambúrguer (Oculto no Desktop) */
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            color: var(--text-main);
-            cursor: pointer;
-            z-index: 101;
-        }
-
-        .hero {
-            padding: 160px 0 100px;
-            background-color: var(--surface-color);
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem); 
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -1px;
-            color: var(--text-main);
-        }
-
-        .hero h1 span { color: var(--primary-color); }
-
-        .hero p {
-            font-size: 1.125rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 16px 32px;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition);
-            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
-            cursor: pointer;
-            border: none;
-            text-align: center;
-        }
-
-        .btn:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px); 
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
-        }
-
-        .services {
-            padding: 100px 0;
-            background-color: var(--bg-color);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .card {
-            background-color: var(--surface-color);
-            padding: 40px;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
-            transform: translateY(-5px);
-            border-color: #cbd5e1;
-        }
-
-        .card-icon {
-            width: 56px;
-            height: 56px;
-            background-color: #eff6ff;
-            color: var(--primary-color);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 24px;
-        }
-
-        .card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 16px;
-            color: var(--text-main);
-        }
-        .card p {
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-
-        .pricing {
-            padding: 100px 0;
-            background-color: var(--surface-color);
-        }
-
-        .pricing-box {
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 48px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .pricing-icon {
-            font-size: 3rem;
-            color: #3b82f6;
-            margin-bottom: 20px;
-        }
-        .pricing-box h3 { font-size: 2rem; margin-bottom: 16px; }
-        .pricing-box p { color: var(--text-muted); }
-
-        .contact {
-            padding: 100px 0;
-            background-color: var(--dark-surface);
-            color: white;
-        }
-
-        .contact .section-header h2 { color: white; }
-        .contact .section-header p { color: #94a3b8; margin-top: 16px; }
-
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group { margin-bottom: 24px; }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #cbd5e1;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 16px;
-            background-color: var(--dark-surface-alt);
-            border: 1px solid #334155;
-            border-radius: var(--radius-md);
-            color: white;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-        }
-
-        .btn-full { width: 100%; }
-
-        #socialmedia {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin: 20px 0;
-        }
-
-        .contact-item {
-            background-color: var(--dark-surface-alt);
-            padding: 16px 20px;
-            border-radius: var(--radius-md);
-            border: 1px solid #334155;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 1.1rem;
-            color: #f1f5f9;
-            word-break: break-word; /* Evita que o email quebre o layout no mobile */
-        }
-
-        .contact-item:hover {
-            border-color: var(--primary-color);
-            background-color: #243044;
-        }
-
-        #ou {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-weight: 800;
-            font-size: 1.2rem;
-            margin: 25px 0;
-            letter-spacing: 2px;
-        }
-
-        #ou::before, #ou::after {
-            content: "";
-            height: 1px;
-            background: #334155;
-            flex: 1;
-            margin: 0 15px;
-            max-width: 60px;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: #020617;
-            padding: 32px 0;
-            text-align: center;
-            color: #475569;
-            font-size: 0.875rem;
-        }
-
-        /* =========================================
-           Otimizações Mobile (Media Queries)
-        ========================================= */
-        @media (max-width: 768px) {
-            /* Ativa o botão hambúrguer */
-            .menu-toggle { 
-                display: block; 
-            }
-            
-            /* Reposiciona e estiliza o menu para mobile */
-            .nav-links { 
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--surface-color);
-                flex-direction: column;
-                padding: 20px 0;
-                gap: 1.5rem;
-                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-                
-                /* Efeito de esconder/mostrar */
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-20px);
-                transition: var(--transition);
-            }
-
-            /* Classe adicionada via JS quando o menu está aberto */
-            .nav-links.active {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-            }
-
-            .nav-links a {
-                font-size: 1.125rem;
-                padding: 10px;
-                display: block;
-                width: 100%;
-                text-align: center;
-            }
-
-            .github-link {
-                justify-content: center;
-            }
-
-            /* Redução de espaçamentos (paddings) no mobile para melhor leitura */
-            .hero { padding: 120px 0 60px; }
-            .services { padding: 60px 0; }
-            .pricing { padding: 60px 0; }
-            .contact { padding: 60px 0; }
-            
-            .section-header { margin-bottom: 40px; }
-            .section-header h2 { font-size: 2rem; }
-
-            .cards-grid { grid-template-columns: 1fr; gap: 20px; }
-            
-            .card { padding: 30px 20px; }
-            
-            .pricing-box { padding: 32px 20px; }
-            .pricing-box h3 { font-size: 1.5rem; }
-
-            .contact-item { font-size: 1rem; padding: 14px; }
-        }
-    </style>
 </head>
 
 <body class="pt-active">
-
     <!-- Navegação -->
-    <nav>
-        <div class="container nav-content">
-            <div class="logo">DevServices</div>
-            
-            <!-- Ícone Menu Hambúrguer -->
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </div>
-
-            <div class="nav-links" id="nav-links">
-                <a href="#servicos" class="lang-pt" onclick="closeMenu()">Serviços</a>
-                <a href="#servicos" class="lang-en" onclick="closeMenu()">Services</a>
+    <header>
+        <nav role="navigation" aria-label="Navegação principal">
+            <div class="container nav-content">
+                <a href="#" class="logo" aria-label="Pedro Henrique - Página inicial">Pedro Henrique</a>
                 
-                <a href="#valores" class="lang-pt" onclick="closeMenu()">Valores</a>
-                <a href="#valores" class="lang-en" onclick="closeMenu()">Pricing</a>
-                
-                <a href="#contato" class="lang-pt" onclick="closeMenu()">Contato</a>
-                <a href="#contato" class="lang-en" onclick="closeMenu()">Contact</a>
-                
-                <a href="https://github.com/0pedrohalmeida0" target="_blank" class="github-link" onclick="closeMenu()">
-                    <i class="fab fa-github"></i>
-                    <span class="lang-pt">Meu Portfólio</span>
-                    <span class="lang-en">My Portfolio</span>
-                </a>
-                
-                <button onclick="toggleLanguage()" class="lang-btn">PT / EN</button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container">
-            <h1 class="lang-pt">Soluções Inteligentes em <br><span>Automação</span> e <span>Gestão</span></h1>
-            <h1 class="lang-en">Smart Solutions in <br><span>Automation</span> & <span>Management</span></h1>
-            
-            <p class="lang-pt">Desenvolvimento de sistemas sob medida para otimizar rotinas de faturamento, expedição logística, plataformas de administração educacional e pequenos negócios.</p>
-            <p class="lang-en">Custom system development to optimize billing routines, logistics shipping, educational administration platforms, and small businesses.</p>
-            
-            <a href="#contato" class="btn lang-pt">Solicitar Orçamento</a>
-            <a href="#contato" class="btn lang-en">Request a Quote</a>
-        </div>
-    </section>
-
-    <!-- Serviços -->
-    <section id="servicos" class="services">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="lang-pt">Especialidades</h2>
-                <h2 class="lang-en">Expertise</h2>
-            </div>
-            
-            <div class="cards-grid">
-                <!-- Card 1 -->
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-truck-fast"></i></div>
-                    <h3 class="lang-pt">Automação Logística</h3>
-                    <h3 class="lang-en">Logistics Automation</h3>
-                    <p class="lang-pt">Criação de scripts e fluxos automatizados para processos de expedição e faturamento. Redução de erros em tarefas repetitivas e integração eficiente de bancos de dados relacionais.</p>
-                    <p class="lang-en">Creation of scripts and automated workflows for shipping and billing processes. Reduction of errors in repetitive tasks and efficient relational database integration.</p>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <h3 class="lang-pt">Plataformas Educacionais</h3>
-                    <h3 class="lang-en">Educational Platforms</h3>
-                    <p class="lang-pt">Desenvolvimento de sistemas de gestão web para controle de alunos, estruturação de portais educacionais, agendamento de turmas e tratamento lógico de dados no backend.</p>
-                    <p class="lang-en">Development of web management systems for student control, structuring of educational portals, class scheduling, and backend logical data processing.</p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-store"></i></div>
-                    <h3 class="lang-pt">Gestão Comercial</h3>
-                    <h3 class="lang-en">Commercial Management</h3>
-                    <p class="lang-pt">Sistemas sob medida para pequenos negócios. Controle de vendas, fluxo de caixa, gestão de estoque e cadastro de clientes em plataformas intuitivas.</p>
-                    <p class="lang-en">Custom systems for small businesses. Sales tracking, cash flow, inventory management, and customer registration on intuitive platforms.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Valores -->
-    <section id="valores" class="pricing">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="lang-pt">Investimento</h2>
-                <h2 class="lang-en">Pricing</h2>
-            </div>
-            
-            <div class="pricing-box">
-                <i class="fas fa-handshake pricing-icon"></i>
-                <h3 class="lang-pt">De integrações simples a sistemas completos (Valores a partir de R$ 200) </h3>
-                <h3 class="lang-en">From simple integrations to complete systems (Prices starting from US$ 40) </h3>
-                <p class="lang-pt">Os valores são adaptáveis e negociáveis de acordo com a complexidade do projeto, o volume de dados tratados e os requisitos de integração da sua empresa. O foco é entregar o melhor custo-benefício para a sua operação.</p>
-                <p class="lang-en">Prices are flexible and negotiable depending on the project's complexity, data volume, and your company's integration requirements. The goal is to deliver the best cost-benefit for your operation.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contato -->
-    <section id="contato" class="contact">
-        <div class="container form-container">
-            <div class="section-header">
-                <h2 class="lang-pt">Vamos conversar?</h2>
-                <h2 class="lang-en">Let's Talk?</h2>
-            </div>
-                
-            <div id="socialmedia">
-                <a href="https://wa.me/5551991803676" target="_blank" class="contact-item">
-                    <i class="fab fa-whatsapp" style="color: #25d366;"></i>
-                    <span class="lang-pt">WhatsApp: (51) 9918-03676</span>
-                    <span class="lang-en">WhatsApp: +55 (51) 9918-03676</span>
-                </a>
-                
-                <a href="mailto:phdealmeida3@gmail.com" class="contact-item">
-                    <i class="fas fa-envelope" style="color: #ffffff;"></i>
-                    <span>E-mail: phdealmeida3@gmail.com</span>
-                </a>
-            </div>
-
-            <div id="ou">
-                <p class="lang-pt">OU</p>
-                <p class="lang-en">OR</p>
-            </div>
-                        
-            <form id="contact-form" action="https://formspree.io/f/mjgqzpnw" method="POST">
-                <div class="form-group">
-                    <label class="lang-pt">Nome</label>
-                    <label class="lang-en">Name</label>
-                    <input type="text" name="nome" required>
-                </div>
-                <div class="form-group">
-                    <label class="lang-pt">E-mail</label>
-                    <label class="lang-en">Email</label>
-                    <input type="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label class="lang-pt">Mensagem</label>
-                    <label class="lang-en">Message</label>
-                    <textarea name="mensagem" rows="4" required></textarea>
-                </div>
-                <button type="submit" id="submit-btn" class="btn btn-full">
-                    <span class="lang-pt">Enviar Mensagem</span>
-                    <span class="lang-en">Send Message</span>
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                    <i class="fas fa-times" aria-hidden="true"></i>
                 </button>
-            </form>
-            <p id="form-status" style="margin-top: 15px; text-align: center; font-weight: 600; display: none;"></p>
-        </div>
-    </section>
+
+                <div class="nav-links" id="nav-links" role="menubar">
+                    <a href="#sobre" class="lang-pt" role="menuitem" onclick="closeMenu()">Sobre</a>
+                    <a href="#sobre" class="lang-en" role="menuitem" onclick="closeMenu()">About</a>
+                    
+                    <a href="#tecnologias" class="lang-pt" role="menuitem" onclick="closeMenu()">Tecnologias</a>
+                    <a href="#tecnologias" class="lang-en" role="menuitem" onclick="closeMenu()">Tech Stack</a>
+                    
+                    <a href="#servicos" class="lang-pt" role="menuitem" onclick="closeMenu()">Serviços</a>
+                    <a href="#servicos" class="lang-en" role="menuitem" onclick="closeMenu()">Services</a>
+                    
+                    <a href="#valores" class="lang-pt" role="menuitem" onclick="closeMenu()">Valores</a>
+                    <a href="#valores" class="lang-en" role="menuitem" onclick="closeMenu()">Pricing</a>
+                    
+                    <a href="#contato" class="lang-pt" role="menuitem" onclick="closeMenu()">Contato</a>
+                    <a href="#contato" class="lang-en" role="menuitem" onclick="closeMenu()">Contact</a>
+                    
+                    <a href="https://github.com/0pedrohalmeida0" target="_blank" rel="noopener noreferrer" class="github-link" role="menuitem" onclick="closeMenu()" aria-label="Visitar perfil no GitHub">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                        <span>GitHub</span>
+                    </a>
+                    
+                    <button onclick="toggleLanguage()" class="lang-btn" aria-label="Mudar idioma">
+                        <span class="lang-pt">EN</span>
+                        <span class="lang-en">PT</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero" aria-labelledby="hero-title">
+            <canvas id="particles-canvas" aria-hidden="true"></canvas>
+            <div class="container">
+                <div class="hero-badge fade-in">
+                    <i class="fas fa-code" aria-hidden="true"></i>
+                    <span class="lang-pt">Full Stack Python Developer</span>
+                    <span class="lang-en">Full Stack Python Developer</span>
+                </div>
+                
+                <h1 id="hero-title" class="lang-pt fade-in">
+                    Pedro Henrique <br><span>de Almeida</span>
+                </h1>
+                <h1 id="hero-title" class="lang-en fade-in">
+                    Pedro Henrique <br><span>de Almeida</span>
+                </h1>
+                
+                <p class="hero-subtitle lang-pt fade-in">Construindo software para resolver problemas reais</p>
+                <p class="hero-subtitle lang-en fade-in">Building software to solve real-world problems</p>
+                
+                <p class="lang-pt fade-in">Desenvolvedor Python com formação em Relações Internacionais e experiência em logística, faturamento e processos empresariais. Combino conhecimento de negócio e tecnologia para criar soluções web eficientes.</p>
+                <p class="lang-en fade-in">Python Developer with a degree in International Relations and experience in logistics, invoicing, and business operations. I combine business knowledge and technology to create efficient web solutions.</p>
+                
+                <a href="#contato" class="btn lang-pt fade-in" aria-label="Solicitar orçamento">
+                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                    Entrar em Contato
+                </a>
+                <a href="#contato" class="btn lang-en fade-in" aria-label="Get in touch">
+                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                    Get in Touch
+                </a>
+            </div>
+        </section>
+
+        <!-- Sobre Mim -->
+        <section id="sobre" class="about" aria-labelledby="about-title">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 id="about-title" class="lang-pt">Sobre Mim</h2>
+                    <h2 id="about-title" class="lang-en">About Me</h2>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-text fade-in">
+                        <h3 class="lang-pt">Desenvolvedor Full Stack com Visão de Negócio</h3>
+                        <h3 class="lang-en">Full Stack Developer with Business Insight</h3>
+                        
+                        <p class="lang-pt">Sou um profissional da área de Tecnologia com formação em Relações Internacionais e experiência prática em logística, faturamento e processos empresariais. Atualmente desenvolvo soluções web utilizando Python, Django e bancos de dados relacionais.</p>
+                        <p class="lang-en">I'm a Technology professional with a degree in International Relations and hands-on experience in logistics, invoicing, and business operations. Currently building web solutions using Python, Django, and relational databases.</p>
+                        
+                        <p class="lang-pt">Minha abordagem única combina conhecimento técnico com compreensão profunda das necessidades do negócio, permitindo criar sistemas que realmente resolvem problemas operacionais reais.</p>
+                        <p class="lang-en">My unique approach combines technical knowledge with a deep understanding of business needs, allowing me to create systems that truly solve real operational problems.</p>
+                        
+                        <div class="about-info">
+                            <div class="about-info-item">
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                <span class="lang-pt">Bacharel em Relações Internacionais</span>
+                                <span class="lang-en">Bachelor's in International Relations</span>
+                            </div>
+                            <div class="about-info-item">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                <span>Rio Grande do Sul, Brasil</span>
+                            </div>
+                            <div class="about-info-item">
+                                <i class="fas fa-language" aria-hidden="true"></i>
+                                <span class="lang-pt">Português (Nativo) | Inglês (B2)</span>
+                                <span class="lang-en">Portuguese (Native) | English (B2)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-stats fade-in">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-code" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="lang-pt">Python & Django</h4>
+                            <h4 class="lang-en">Python & Django</h4>
+                            <p class="lang-pt">Desenvolvimento backend robusto</p>
+                            <p class="lang-en">Robust backend development</p>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-database" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="lang-pt">Bancos de Dados</h4>
+                            <h4 class="lang-en">Databases</h4>
+                            <p class="lang-pt">PostgreSQL, MySQL, SQLite</p>
+                            <p class="lang-en">PostgreSQL, MySQL, SQLite</p>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-cogs" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="lang-pt">Automação</h4>
+                            <h4 class="lang-en">Automation</h4>
+                            <p class="lang-pt">Processos e APIs REST</p>
+                            <p class="lang-en">Processes & REST APIs</p>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-briefcase" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="lang-pt">Negócios</h4>
+                            <h4 class="lang-en">Business</h4>
+                            <p class="lang-pt">Logística, ERP e Faturamento</p>
+                            <p class="lang-en">Logistics, ERP & Invoicing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tecnologias -->
+        <section id="tecnologias" class="tech-stack" aria-labelledby="tech-title">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 id="tech-title" class="lang-pt">Minhas Tecnologias</h2>
+                    <h2 id="tech-title" class="lang-en">My Tech Stack</h2>
+                    <p class="lang-pt">Ferramentas e tecnologias que utilizo para criar soluções eficientes</p>
+                    <p class="lang-en">Tools and technologies I use to create efficient solutions</p>
+                </div>
+                
+                <div class="tech-categories">
+                    <!-- Frontend -->
+                    <div class="tech-category fade-in">
+                        <div class="tech-category-header">
+                            <div class="tech-category-icon">
+                                <i class="fas fa-palette" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="lang-pt">Frontend</h3>
+                            <h3 class="lang-en">Frontend</h3>
+                        </div>
+                        <div class="tech-list">
+                            <div class="tech-item">
+                                <i class="fab fa-html5" style="color: #E34F26;" aria-hidden="true"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fab fa-css3-alt" style="color: #1572B6;" aria-hidden="true"></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fab fa-js" style="color: #F7DF1E;" aria-hidden="true"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-code" style="color: #3178C6;" aria-hidden="true"></i>
+                                <span>TypeScript</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fab fa-react" style="color: #61DAFB;" aria-hidden="true"></i>
+                                <span>React</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-n" style="color: #000000;" aria-hidden="true"></i>
+                                <span>Next.js</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-wind" style="color: #38B2AC;" aria-hidden="true"></i>
+                                <span>Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backend -->
+                    <div class="tech-category fade-in">
+                        <div class="tech-category-header">
+                            <div class="tech-category-icon">
+                                <i class="fas fa-server" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="lang-pt">Backend</h3>
+                            <h3 class="lang-en">Backend</h3>
+                        </div>
+                        <div class="tech-list">
+                            <div class="tech-item">
+                                <i class="fab fa-python" style="color: #3776AB;" aria-hidden="true"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-leaf" style="color: #092E20;" aria-hidden="true"></i>
+                                <span>Django</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-flask" style="color: #000000;" aria-hidden="true"></i>
+                                <span>Flask</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-plug" style="color: #2563eb;" aria-hidden="true"></i>
+                                <span>REST APIs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Databases -->
+                    <div class="tech-category fade-in">
+                        <div class="tech-category-header">
+                            <div class="tech-category-icon">
+                                <i class="fas fa-database" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="lang-pt">Bancos de Dados</h3>
+                            <h3 class="lang-en">Databases</h3>
+                        </div>
+                        <div class="tech-list">
+                            <div class="tech-item">
+                                <i class="fas fa-database" style="color: #4169E1;" aria-hidden="true"></i>
+                                <span>PostgreSQL</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-database" style="color: #00758F;" aria-hidden="true"></i>
+                                <span>MySQL</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-database" style="color: #07405E;" aria-hidden="true"></i>
+                                <span>SQLite</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ferramentas -->
+                    <div class="tech-category fade-in">
+                        <div class="tech-category-header">
+                            <div class="tech-category-icon">
+                                <i class="fas fa-tools" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="lang-pt">Ferramentas & Foco</h3>
+                            <h3 class="lang-en">Tools & Focus</h3>
+                        </div>
+                        <div class="tech-list">
+                            <div class="tech-item">
+                                <i class="fas fa-cogs" style="color: #2563eb;" aria-hidden="true"></i>
+                                <span class="lang-pt">Automação de Processos</span>
+                                <span class="lang-en">Process Automation</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-project-diagram" style="color: #2563eb;" aria-hidden="true"></i>
+                                <span class="lang-pt">Arquitetura de Software</span>
+                                <span class="lang-en">Software Architecture</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-mobile-alt" style="color: #2563eb;" aria-hidden="true"></i>
+                                <span>PWAs</span>
+                            </div>
+                            <div class="tech-item">
+                                <i class="fas fa-truck" style="color: #2563eb;" aria-hidden="true"></i>
+                                <span class="lang-pt">Sistemas ERP</span>
+                                <span class="lang-en">ERP Systems</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Serviços -->
+        <section id="servicos" class="services" aria-labelledby="services-title">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 id="services-title" class="lang-pt">O Que Posso Fazer</h2>
+                    <h2 id="services-title" class="lang-en">What I Can Do</h2>
+                    <p class="lang-pt">Soluções personalizadas para otimizar seu negócio</p>
+                    <p class="lang-en">Custom solutions to optimize your business</p>
+                </div>
+                
+                <div class="cards-grid">
+                    <!-- Card 1 -->
+                    <article class="card fade-in">
+                        <div class="card-icon" aria-hidden="true">
+                            <i class="fas fa-truck-fast"></i>
+                        </div>
+                        <h3 class="lang-pt">Automação Logística</h3>
+                        <h3 class="lang-en">Logistics Automation</h3>
+                        <p class="lang-pt">Criação de scripts e fluxos automatizados para processos de expedição e faturamento. Redução de erros em tarefas repetitivas e integração eficiente de bancos de dados relacionais.</p>
+                        <p class="lang-en">Creation of scripts and automated workflows for shipping and billing processes. Reduction of errors in repetitive tasks and efficient relational database integration.</p>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="card fade-in">
+                        <div class="card-icon" aria-hidden="true">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="lang-pt">Plataformas Educacionais</h3>
+                        <h3 class="lang-en">Educational Platforms</h3>
+                        <p class="lang-pt">Desenvolvimento de sistemas de gestão web para controle de alunos, estruturação de portais educacionais, agendamento de turmas e tratamento lógico de dados no backend.</p>
+                        <p class="lang-en">Development of web management systems for student control, structuring of educational portals, class scheduling, and backend logical data processing.</p>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="card fade-in">
+                        <div class="card-icon" aria-hidden="true">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3 class="lang-pt">Gestão Comercial</h3>
+                        <h3 class="lang-en">Commercial Management</h3>
+                        <p class="lang-pt">Sistemas sob medida para pequenos negócios. Controle de vendas, fluxo de caixa, gestão de estoque e cadastro de clientes em plataformas intuitivas.</p>
+                        <p class="lang-en">Custom systems for small businesses. Sales tracking, cash flow, inventory management, and customer registration on intuitive platforms.</p>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="card fade-in">
+                        <div class="card-icon" aria-hidden="true">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h3 class="lang-pt">APIs REST</h3>
+                        <h3 class="lang-en">REST APIs</h3>
+                        <p class="lang-pt">Desenvolvimento de APIs robustas e bem documentadas para integração entre sistemas, utilizando Django REST Framework e boas práticas de arquitetura.</p>
+                        <p class="lang-en">Development of robust and well-documented APIs for system integration, using Django REST Framework and architecture best practices.</p>
+                    </article>
+
+                    <!-- Card 5 -->
+                    <article class="card fade-in">
+                        <div class="card-icon" aria-hidden="true">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="lang-pt">Sistemas ERP</h3>
+                        <h3 class="lang-en">ERP Systems</h3>
+                        <p class="lang-pt">Criação de sistemas integrados de gestão empresarial com módulos de faturamento, controle de estoque, fluxo de caixa e relatórios personalizados.</p>
+                        <p class="lang-en">Creation of integrated business management systems with billing, inventory control, cash flow, and custom reporting modules.</p>
+                    </article>
+
+                    <!-- Card 6 -->
+                    <article class="card fade-in">
+                        <div class="card-icon" aria-hidden="true">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="lang-pt">Progressive Web Apps</h3>
+                        <h3 class="lang-en">Progressive Web Apps</h3>
+                        <p class="lang-pt">Desenvolvimento de PWAs que combinam o melhor da web e de aplicativos móveis, oferecendo experiência offline e instalação direta no dispositivo.</p>
+                        <p class="lang-en">Development of PWAs that combine the best of web and mobile apps, offering offline experience and direct device installation.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Valores -->
+        <section id="valores" class="pricing" aria-labelledby="pricing-title">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 id="pricing-title" class="lang-pt">Investimento</h2>
+                    <h2 id="pricing-title" class="lang-en">Pricing</h2>
+                </div>
+                
+                <div class="pricing-box fade-in">
+                    <i class="fas fa-handshake pricing-icon" aria-hidden="true"></i>
+                    <h3 class="lang-pt">De integrações simples a sistemas completos (Valores a partir de R$ 200)</h3>
+                    <h3 class="lang-en">From simple integrations to complete systems (Prices starting from US$ 40)</h3>
+                    <p class="lang-pt">Os valores são adaptáveis e negociáveis de acordo com a complexidade do projeto, o volume de dados tratados e os requisitos de integração da sua empresa. O foco é entregar o melhor custo-benefício para a sua operação.</p>
+                    <p class="lang-en">Prices are flexible and negotiable depending on the project's complexity, data volume, and your company's integration requirements. The goal is to deliver the best cost-benefit for your operation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section id="contato" class="contact" aria-labelledby="contact-title">
+            <div class="container form-container">
+                <div class="section-header fade-in">
+                    <h2 id="contact-title" class="lang-pt">Vamos Conversar?</h2>
+                    <h2 id="contact-title" class="lang-en">Let's Talk?</h2>
+                    <p class="lang-pt">Entre em contato e vamos transformar sua ideia em realidade</p>
+                    <p class="lang-en">Get in touch and let's turn your idea into reality</p>
+                </div>
+                    
+                <div id="socialmedia" class="fade-in">
+                    <a href="https://wa.me/5551991803676" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="Contato via WhatsApp">
+                        <i class="fab fa-whatsapp" style="color: #25d366;" aria-hidden="true"></i>
+                        <span class="lang-pt">WhatsApp: (51) 99180-3676</span>
+                        <span class="lang-en">WhatsApp: +55 (51) 99180-3676</span>
+                    </a>
+                    
+                    <a href="mailto:phdealmeida3@gmail.com" class="contact-item" aria-label="Contato via e-mail">
+                        <i class="fas fa-envelope" style="color: #ffffff;" aria-hidden="true"></i>
+                        <span>E-mail: phdealmeida3@gmail.com</span>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/in/pedrohenriquedealmeida3" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="Perfil no LinkedIn">
+                        <i class="fab fa-linkedin" style="color: #0077B5;" aria-hidden="true"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+
+                <div id="ou" class="fade-in">
+                    <p class="lang-pt">OU</p>
+                    <p class="lang-en">OR</p>
+                </div>
+                            
+                <form id="contact-form" action="https://formspree.io/f/mjgqzpnw" method="POST" class="fade-in" novalidate>
+                    <!-- Honeypot anti-spam -->
+                    <div class="hp-field" aria-hidden="true">
+                        <label>Não preencha este campo</label>
+                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="lang-pt" for="nome">Nome *</label>
+                        <label class="lang-en" for="nome">Name *</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Seu nome completo" autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label class="lang-pt" for="email">E-mail *</label>
+                        <label class="lang-en" for="email">Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="seu@email.com" autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label class="lang-pt" for="mensagem">Mensagem *</label>
+                        <label class="lang-en" for="mensagem">Message *</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Conte-me sobre seu projeto..."></textarea>
+                    </div>
+                    <button type="submit" id="submit-btn" class="btn btn-full">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        <span class="lang-pt">Enviar Mensagem</span>
+                        <span class="lang-en">Send Message</span>
+                    </button>
+                </form>
+                <div id="form-status" role="alert" aria-live="polite"></div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <p>&copy; 2026 Pedro Henrique de Almeida. <span class="lang-pt">Todos os direitos reservados.</span><span class="lang-en">All rights reserved.</span></p>
+            <p>
+                <a href="https://github.com/0pedrohalmeida0" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i> GitHub
+                </a>
+                &nbsp;|&nbsp;
+                <a href="https://www.linkedin.com/in/pedrohenriquedealmeida3" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+                </a>
+            </p>
+            <p class="footer-philosophy">
+                <span class="lang-pt">"Construindo software para resolver problemas operacionais reais."</span>
+                <span class="lang-en">"Building software to solve real-world operational problems."</span>
+            </p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script>
-        // Função para abrir/fechar o menu mobile
-        function toggleMenu() {
-            const navLinks = document.getElementById('nav-links');
-            navLinks.classList.toggle('active');
-        }
+    <!-- Botão Voltar ao Topo -->
+    <button class="back-to-top" id="back-to-top" aria-label="Voltar ao topo" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
 
-        // Função para fechar o menu ao clicar em um link (melhor UX no mobile)
-        function closeMenu() {
-            const navLinks = document.getElementById('nav-links');
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-            }
-        }
-
-        // Troca de idioma
-        function toggleLanguage() {
-            const body = document.body;
-            if (body.classList.contains('pt-active')) {
-                body.classList.replace('pt-active', 'en-active');
-            } else {
-                body.classList.replace('en-active', 'pt-active');
-            }
-            // Fecha o menu mobile ao trocar o idioma (opcional)
-            closeMenu();
-        }
-
-        // Script do Formulário
-        const form = document.getElementById("contact-form");
-        const statusMsg = document.getElementById("form-status");
-        const submitBtn = document.getElementById("submit-btn");
-
-        form.addEventListener("submit", async function (event) {
-            event.preventDefault();
-
-            const originalBtnContent = submitBtn.innerHTML;
-            submitBtn.innerHTML = "Enviando... / Sending...";
-            submitBtn.disabled = true;
-            submitBtn.style.opacity = "0.7";
-            
-            const formData = new FormData(form);
-
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    statusMsg.style.display = "block";
-                    statusMsg.style.color = "#4ade80"; // Verde
-                    statusMsg.innerHTML = "Mensagem enviada com sucesso! / Message sent successfully!";
-                    form.reset(); 
-                } else {
-                    statusMsg.style.display = "block";
-                    statusMsg.style.color = "#f87171"; // Vermelho
-                    statusMsg.innerHTML = "Oops! Ocorreu um problema ao enviar. / Oops! There was a problem.";
-                }
-            } catch (error) {
-                statusMsg.style.display = "block";
-                statusMsg.style.color = "#f87171";
-                statusMsg.innerHTML = "Erro de conexão. Tente novamente. / Connection error. Try again.";
-            } finally {
-                submitBtn.innerHTML = originalBtnContent;
-                submitBtn.disabled = false;
-                submitBtn.style.opacity = "1";
-                
-                setTimeout(() => {
-                    statusMsg.style.display = "none";
-                }, 5000);
-            }
-        });
-    </script>
+    
 </body>
+
+<script src="script.js"></script>
+
 </html>
