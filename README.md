@@ -10,7 +10,6 @@ Landing page profissional do Pedro Henrique de Almeida.
 
 ## Deploy
 - **Netlify**: drag & drop a pasta, ou `netlify deploy --prod`
-- **GitHub Pages**: Settings → Pages → Source: `main` / root
 
 ## Contato
 - WhatsApp: (51) 99180-3676
