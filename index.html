@@ -1,536 +1,1331 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pedro Henrique de Almeida - Full Stack Python Developer. Soluções web com Python, Django, automação de processos e bancos de dados relacionais.">
-    <meta name="keywords" content="python, django, desenvolvedor, automação, sistemas, gestão, full stack, APIs REST">
-    <meta name="author" content="Pedro Henrique de Almeida">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://devservices.com/">
-    <meta property="og:title" content="Pedro Henrique de Almeida | Full Stack Python Developer">
-    <meta property="og:description" content="Soluções web com Python, Django e automação de processos para resolver problemas reais.">
-    <meta property="og:image" content="https://devservices.com/og-image.jpg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pedro Henrique de Almeida — Engenheiro de software full stack. Sistemas web sob medida, de landing pages a ERPs complexos, construídos especificamente para o seu negócio." />
+  <meta name="keywords" content="Pedro Henrique, desenvolvedor, full stack, python, django, flask, sistemas sob medida, ERP, CRM, landing page, automação, rio grande do sul" />
+  <meta name="author" content="Pedro Henrique de Almeida" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://devservices.com/">
-    <meta property="twitter:title" content="Pedro Henrique de Almeida | Full Stack Python Developer">
-    <meta property="twitter:description" content="Soluções web com Python, Django e automação de processos para resolver problemas reais.">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Pedro Henrique de Almeida — Sistemas sob medida" />
+  <meta property="og:description" content="Sistemas web sob medida, de landing pages a ERPs complexos. Construídos especificamente para o seu negócio." />
 
-    <title>Pedro Henrique de Almeida | Full Stack Python Developer</title>
-    
-    <!-- Preconnect para performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <title>Pedro Henrique — Sistemas sob medida para problemas reais</title>
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2310b981'/%3E%3Ctext x='50' y='66' font-family='Outfit,sans-serif' font-size='52' font-weight='700' text-anchor='middle' fill='%23ffffff'%3EPH%3C/text%3E%3C/svg%3E" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
+  <style>
+    /* ---------- Reset & tokens ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+      font-feature-settings: "ss01", "cv11";
+      -webkit-font-smoothing: antialiased;
+      color: #14171e;
+      background: #fafafa;
+      line-height: 1.6;
+    }
+    img, svg { display: block; max-width: 100%; }
+
+    :root {
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --line: #e5e7eb;
+      --line-soft: #f1f3f5;
+      --ink: #14171e;
+      --ink-2: #3a4256;
+      --ink-3: #6b7280;
+      --ink-4: #9ca3af;
+      --accent: #10b981;
+      --accent-deep: #047857;
+      --accent-soft: #d1fae5;
+      --accent-bg: #ecfdf5;
+      --sky: #0ea5e9;
+      --sky-soft: #e0f2fe;
+      --amber: #f59e0b;
+      --rose: #f43f5e;
+      --shadow-sm: 0 1px 2px rgba(20, 23, 30, 0.04);
+      --shadow-md: 0 4px 16px -4px rgba(20, 23, 30, 0.06);
+      --shadow-lg: 0 8px 32px -8px rgba(20, 23, 30, 0.08);
+    }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    @media (min-width: 768px) { .container { padding: 0 32px; } }
+
+    /* ---------- Typography ---------- */
+    h1, h2, h3, h4 { font-weight: 600; letter-spacing: -0.015em; line-height: 1.15; margin: 0; color: var(--ink); }
+    h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 700; letter-spacing: -0.025em; }
+    h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+    h3 { font-size: 1.25rem; }
+    p  { margin: 0; color: var(--ink-2); }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-feature-settings: "zero", "ss01"; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500;
+      color: var(--accent-deep); text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 6px 12px; border-radius: 999px;
+      background: var(--accent-bg); border: 1px solid var(--accent-soft);
+    }
+    .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+    /* ---------- Nav ---------- */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(250, 250, 250, 0.85);
+      backdrop-filter: saturate(180%) blur(14px);
+      -webkit-backdrop-filter: saturate(180%) blur(14px);
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-weight: 700; color: var(--ink); text-decoration: none; font-size: 15px;
+    }
+    .brand-mark {
+      width: 32px; height: 32px; border-radius: 9px;
+      background: var(--ink); color: #fff;
+      display: grid; place-items: center; font-weight: 700; font-size: 14px;
+    }
+    .nav-links { display: none; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--ink-2); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--ink); color: #fff; text-decoration: none;
+      padding: 9px 16px; border-radius: 9px; font-size: 13.5px; font-weight: 500;
+      transition: transform .15s, background .15s;
+    }
+    .nav-cta:hover { background: #000; transform: translateY(-1px); }
+    @media (min-width: 860px) { .nav-links { display: inline-flex; } }
+
+    .menu-btn {
+      display: inline-grid; place-items: center; width: 38px; height: 38px;
+      border-radius: 9px; border: 1px solid var(--line); background: var(--surface);
+      cursor: pointer; color: var(--ink);
+    }
+    @media (min-width: 860px) { .menu-btn { display: none; } }
+
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--line-soft);
+      background: var(--surface);
+      padding: 8px 0 14px;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block; padding: 11px 24px; color: var(--ink-2);
+      text-decoration: none; font-weight: 500; font-size: 15px;
+    }
+    .mobile-menu a:hover { color: var(--ink); background: var(--line-soft); }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 80px 0 60px; position: relative; overflow: hidden; }
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 700px 380px at 85% 0%, rgba(16, 185, 129, 0.08), transparent 60%),
+        radial-gradient(ellipse 600px 360px at 0% 100%, rgba(14, 165, 233, 0.05), transparent 60%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid; gap: 56px; align-items: center;
+      grid-template-columns: 1fr;
+      position: relative;
+    }
+    @media (min-width: 960px) { .hero-grid { grid-template-columns: 1.4fr 1fr; gap: 64px; } }
+
+    .hero h1 { margin-top: 18px; }
+    .hero h1 .hl {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--sky) 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero .lede { margin-top: 22px; font-size: 1.125rem; color: var(--ink-2); max-width: 38rem; }
+    .hero .lede strong { color: var(--ink); font-weight: 600; }
+
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 22px; border-radius: 10px; font-weight: 500; font-size: 14.5px;
+      text-decoration: none; transition: all .2s; border: 1px solid transparent;
+      cursor: pointer; font-family: inherit;
+    }
+    .btn-primary { background: var(--ink); color: #fff; }
+    .btn-primary:hover { background: #000; transform: translateY(-1px); }
+    .btn-ghost { background: var(--surface); color: var(--ink); border-color: var(--line); }
+    .btn-ghost:hover { border-color: var(--ink-3); transform: translateY(-1px); }
+    .btn-accent { background: var(--accent); color: #fff; }
+    .btn-accent:hover { background: var(--accent-deep); transform: translateY(-1px); }
+
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+      margin-top: 44px; border-top: 1px solid var(--line); padding-top: 28px;
+      max-width: 38rem;
+    }
+    .stat { display: flex; flex-direction: column; gap: 4px; padding-right: 18px; border-right: 1px solid var(--line-soft); }
+    .stat:last-child { border-right: 0; }
+    .stat-num { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.6rem; color: var(--ink); letter-spacing: -0.02em; }
+    .stat-label { font-size: 12px; color: var(--ink-3); font-weight: 500; }
+
+    /* hero card (right column) */
+    .profile-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+      padding: 28px; box-shadow: var(--shadow-md); position: relative;
+    }
+    .profile-head { display: flex; align-items: center; gap: 16px; }
+    .avatar {
+      width: 64px; height: 64px; border-radius: 18px;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      display: grid; place-items: center; color: #fff; font-weight: 700; font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+    .profile-name { font-weight: 600; font-size: 17px; color: var(--ink); }
+    .profile-role { font-size: 13.5px; color: var(--ink-3); margin-top: 2px; }
+    .profile-divider { height: 1px; background: var(--line-soft); margin: 22px 0; }
+    .profile-rows { display: flex; flex-direction: column; gap: 12px; }
+    .profile-row { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--ink-2); }
+    .profile-row svg { color: var(--accent-deep); flex-shrink: 0; }
+    .profile-row .label { color: var(--ink-3); font-size: 12.5px; min-width: 90px; }
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 500; color: var(--accent-deep);
+      background: var(--accent-bg); padding: 5px 10px; border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+    }
+    .status-pill .pulse {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, .6);
+      animation: pulse 2.2s ease-out infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+      80% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    /* ---------- Section base ---------- */
+    section { padding: 80px 0; }
+    @media (min-width: 768px) { section { padding: 100px 0; } }
+    .section-head { max-width: 720px; margin-bottom: 56px; }
+    .section-head p.sub { margin-top: 14px; font-size: 1.0625rem; color: var(--ink-3); }
+    .alt-bg { background: var(--surface); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+
+    /* ---------- About / Philosophy ---------- */
+    .about-grid {
+      display: grid; gap: 40px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 900px) { .about-grid { grid-template-columns: 1fr 1.05fr; gap: 64px; align-items: start; } }
+    .about-prose p { font-size: 1.0625rem; color: var(--ink-2); margin-bottom: 16px; }
+    .about-prose strong { color: var(--ink); font-weight: 600; }
+    .pull {
+      margin-top: 28px; padding: 22px 24px; border-left: 3px solid var(--accent);
+      background: var(--accent-bg); border-radius: 0 12px 12px 0;
+      font-style: italic; color: var(--ink); font-size: 1.0625rem;
+    }
+
+    .diff-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      padding: 28px; box-shadow: var(--shadow-sm);
+    }
+    .diff-card h3 { margin-bottom: 16px; font-size: 1.0625rem; color: var(--ink); display: flex; align-items: center; gap: 8px; }
+    .diff-card h3 svg { color: var(--accent-deep); }
+    .diff-list { display: flex; flex-direction: column; gap: 12px; }
+    .diff-list li { display: flex; gap: 10px; font-size: 14.5px; color: var(--ink-2); list-style: none; }
+    .diff-list li svg { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+
+    /* ---------- Process timeline ---------- */
+    .process-grid {
+      display: grid; grid-template-columns: 1fr; gap: 0;
+      border: 1px solid var(--line); border-radius: 16px; background: var(--surface);
+      overflow: hidden;
+    }
+    @media (min-width: 768px) { .process-grid { grid-template-columns: repeat(5, 1fr); } }
+    .step {
+      padding: 28px 24px; border-bottom: 1px solid var(--line-soft);
+      position: relative; transition: background .2s;
+    }
+    .process-grid .step:last-child { border-bottom: 0; }
+    @media (min-width: 768px) {
+      .step { border-right: 1px solid var(--line-soft); border-bottom: 0; }
+      .step:last-child { border-right: 0; }
+    }
+    .step:hover { background: var(--accent-bg); }
+    .step-num {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+      color: var(--accent-deep); letter-spacing: 0.08em; margin-bottom: 12px;
+      display: inline-block; padding: 3px 8px; background: var(--accent-bg); border-radius: 4px;
+    }
+    .step-title { font-weight: 600; color: var(--ink); font-size: 15.5px; margin-bottom: 8px; }
+    .step-desc { font-size: 13.5px; color: var(--ink-3); line-height: 1.55; }
+
+    /* ---------- Projects ---------- */
+    .projects-grid {
+      display: grid; gap: 18px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 700px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1080px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .proj {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      padding: 24px; display: flex; flex-direction: column; gap: 14px;
+      transition: all .2s; position: relative; overflow: hidden;
+    }
+    .proj::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--stripe, var(--accent)); opacity: .85;
+    }
+    .proj:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--ink-4); }
+    .proj-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .proj-icon {
+      width: 44px; height: 44px; border-radius: 11px;
+      display: grid; place-items: center; flex-shrink: 0;
+      background: var(--icon-bg, var(--accent-bg));
+      color: var(--icon-fg, var(--accent-deep));
+    }
+    .proj-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 8px;
+      border-radius: 4px; background: var(--line-soft); color: var(--ink-3);
+      white-space: nowrap;
+    }
+    .proj-title { font-size: 1.0625rem; font-weight: 600; color: var(--ink); line-height: 1.3; }
+    .proj-desc { font-size: 14px; color: var(--ink-2); line-height: 1.55; flex: 1; }
+    .proj-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      padding: 4px 9px; border-radius: 5px;
+      background: var(--line-soft); color: var(--ink-2); font-weight: 500;
+      border: 1px solid var(--line);
+    }
+    .proj-links { display: flex; gap: 8px; padding-top: 8px; border-top: 1px solid var(--line-soft); }
+    .proj-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12.5px; font-weight: 500; color: var(--ink-2);
+      text-decoration: none; padding: 4px 0; transition: color .15s;
+    }
+    .proj-link:hover { color: var(--accent-deep); }
+    .proj-link svg { width: 14px; height: 14px; }
+    .proj-link.cta { color: var(--accent-deep); }
+
+    /* ---------- Stack grid with bench bars ---------- */
+    .stack-grid {
+      display: grid; gap: 40px; grid-template-columns: 1fr;
+    }
+    @media (min-width: 900px) { .stack-grid { grid-template-columns: 1fr 1fr; gap: 56px; } }
+
+    .stack-block h3 { font-size: 1rem; color: var(--ink); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+    .stack-block h3 svg { color: var(--accent-deep); }
+    .bench-row {
+      display: grid; grid-template-columns: 110px 1fr 38px;
+      gap: 14px; align-items: center; padding: 8px 0;
+      border-bottom: 1px dashed var(--line-soft);
+    }
+    .bench-row:last-child { border-bottom: 0; }
+    .bench-row .label { font-size: 13.5px; color: var(--ink-2); font-weight: 500; }
+    .bench-bar { height: 8px; background: var(--line-soft); border-radius: 4px; overflow: hidden; }
+    .bench-fill {
+      height: 100%; background: linear-gradient(90deg, var(--accent) 0%, var(--accent-deep) 100%);
+      border-radius: 4px;
+    }
+    .bench-val { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-3); text-align: right; }
+
+    /* ---------- Services ---------- */
+    .services-grid {
+      display: grid; gap: 16px; grid-template-columns: 1fr;
+    }
+    @media (min-width: 720px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1080px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .svc {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+      padding: 24px; display: flex; flex-direction: column; gap: 12px;
+      transition: all .2s;
+    }
+    .svc:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .svc-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      display: grid; place-items: center;
+      background: var(--accent-bg); color: var(--accent-deep);
+    }
+    .svc-title { font-weight: 600; color: var(--ink); font-size: 16px; }
+    .svc-desc { font-size: 14px; color: var(--ink-2); line-height: 1.55; flex: 1; }
+    .svc-from {
+      font-size: 12px; color: var(--ink-3); font-weight: 500;
+      padding-top: 10px; border-top: 1px dashed var(--line-soft);
+    }
+    .svc-from strong { color: var(--ink); font-weight: 600; }
+
+    /* ---------- Pricing table ---------- */
+    .pricing-grid {
+      display: grid; gap: 16px; grid-template-columns: 1fr;
+    }
+    @media (min-width: 900px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .price-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      padding: 28px 24px; display: flex; flex-direction: column; gap: 18px;
+      transition: all .2s; position: relative;
+    }
+    .price-card.featured {
+      border-color: var(--accent); border-width: 2px; box-shadow: 0 8px 24px -10px rgba(16, 185, 129, .3);
+    }
+    .featured-badge {
+      position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: #fff; padding: 4px 12px; border-radius: 999px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .price-name { font-weight: 600; color: var(--ink); font-size: 17px; }
+    .price-tagline { font-size: 13.5px; color: var(--ink-3); margin-top: -8px; }
+    .price-amount {
+      display: flex; align-items: baseline; gap: 6px;
+      font-family: 'Outfit', sans-serif; padding: 14px 0; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
+    }
+    .price-amount .from { font-size: 12px; color: var(--ink-3); }
+    .price-amount .value { font-weight: 700; font-size: 1.875rem; color: var(--ink); letter-spacing: -0.02em; }
+    .price-amount .unit { font-size: 13px; color: var(--ink-3); }
+    .price-feats { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .price-feats li { display: flex; gap: 9px; font-size: 13.5px; color: var(--ink-2); list-style: none; line-height: 1.5; }
+    .price-feats li svg { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+    .price-cta { width: 100%; justify-content: center; }
+
+    /* ---------- Case study ---------- */
+    .case {
+      background: var(--ink); color: #fff; border-radius: 20px; padding: 40px 32px;
+      position: relative; overflow: hidden;
+    }
+    @media (min-width: 768px) { .case { padding: 56px 48px; } }
+    .case::before {
+      content: ""; position: absolute; top: -120px; right: -80px;
+      width: 360px; height: 360px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.18), transparent 70%);
+      pointer-events: none;
+    }
+    .case-grid { display: grid; gap: 36px; grid-template-columns: 1fr; position: relative; }
+    @media (min-width: 900px) { .case-grid { grid-template-columns: 1.1fr 1fr; gap: 64px; } }
+    .case h2 { color: #fff; }
+    .case h2 .accent { color: #34d399; }
+    .case-tag {
+      display: inline-flex; gap: 8px; align-items: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 500;
+      color: #34d399; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px;
+      padding: 5px 10px; border-radius: 4px; background: rgba(16, 185, 129, 0.12);
+      width: fit-content;
+    }
+    .case-text p { color: rgba(255,255,255,0.7); margin-bottom: 14px; font-size: 15.5px; }
+    .case-text strong { color: #fff; font-weight: 600; }
+    .case-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+    .case-stat { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 16px; }
+    .case-stat .n { font-weight: 700; font-size: 1.75rem; color: #34d399; letter-spacing: -0.02em; }
+    .case-stat .l { font-size: 12.5px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+
+    .case-modules h4 { color: #fff; font-size: 14px; margin-bottom: 14px; font-family: 'JetBrains Mono', monospace; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+    .case-modules .mod-list { display: flex; flex-direction: column; gap: 8px; }
+    .case-modules .mod {
+      display: flex; gap: 12px; padding: 12px 14px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 9px; font-size: 14px; color: rgba(255,255,255,0.85);
+      transition: all .2s;
+    }
+    .case-modules .mod:hover { background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3); }
+    .case-modules .mod .mnum { font-family: 'JetBrains Mono', monospace; color: #34d399; font-size: 12px; font-weight: 600; flex-shrink: 0; }
+
+    /* ---------- Testimonials / proof ---------- */
+    .proof-row { display: grid; gap: 18px; grid-template-columns: 1fr; }
+    @media (min-width: 720px) { .proof-row { grid-template-columns: repeat(3, 1fr); } }
+    .proof {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+      padding: 22px; display: flex; flex-direction: column; gap: 12px;
+    }
+    .proof-quote { font-size: 14.5px; color: var(--ink-2); line-height: 1.55; font-style: italic; }
+    .proof-meta { display: flex; align-items: center; gap: 10px; padding-top: 10px; border-top: 1px dashed var(--line-soft); }
+    .proof-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, #10b981, #047857);
+      color: #fff; font-weight: 600; font-size: 13px;
+      display: grid; place-items: center;
+    }
+    .proof-name { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+    .proof-role { font-size: 12px; color: var(--ink-3); }
+
+    /* ---------- Contact ---------- */
+    .contact-grid { display: grid; gap: 40px; grid-template-columns: 1fr; }
+    @media (min-width: 900px) { .contact-grid { grid-template-columns: 1fr 1.2fr; gap: 56px; } }
+
+    .contact-info h2 { margin-bottom: 14px; }
+    .contact-info p { color: var(--ink-2); font-size: 1.0625rem; margin-bottom: 28px; }
+    .contact-list { display: flex; flex-direction: column; gap: 10px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 16px; background: var(--surface); border: 1px solid var(--line);
+      border-radius: 11px; text-decoration: none; color: var(--ink);
+      transition: all .2s;
+    }
+    .contact-item:hover { border-color: var(--accent); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+    .contact-item .ic {
+      width: 36px; height: 36px; border-radius: 9px;
+      display: grid; place-items: center; flex-shrink: 0;
+    }
+    .contact-item .ic.green { background: var(--accent-bg); color: var(--accent-deep); }
+    .contact-item .ic.blue  { background: var(--sky-soft); color: #0369a1; }
+    .contact-item .ic.dark  { background: #f1f5f9; color: #0f172a; }
+    .contact-item .label { font-size: 12.5px; color: var(--ink-3); }
+    .contact-item .value { font-size: 14.5px; font-weight: 500; color: var(--ink); }
+
+    form {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      padding: 32px; box-shadow: var(--shadow-sm);
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 13.5px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 12px 14px; font-family: inherit; font-size: 14.5px;
+      border: 1px solid var(--line); border-radius: 9px; background: var(--bg);
+      color: var(--ink); transition: border-color .15s, box-shadow .15s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-bg);
+    }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .form-grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
+    @media (min-width: 600px) { .form-grid { grid-template-columns: 1fr 1fr; } }
+    .hp-field { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    #form-status { margin-top: 14px; padding: 12px; border-radius: 9px; font-size: 14px; display: none; }
+    #form-status.ok { display: block; background: var(--accent-bg); color: var(--accent-deep); border: 1px solid var(--accent-soft); }
+    #form-status.err { display: block; background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+
+    /* ---------- Footer ---------- */
+    footer { padding: 40px 0 32px; border-top: 1px solid var(--line); margin-top: 60px; }
+    .footer-inner {
+      display: flex; flex-direction: column; gap: 14px; align-items: flex-start;
+      font-size: 13.5px; color: var(--ink-3);
+    }
+    @media (min-width: 720px) { .footer-inner { flex-direction: row; justify-content: space-between; align-items: center; } }
+    .footer-inner a { color: var(--ink-2); text-decoration: none; }
+    .footer-inner a:hover { color: var(--ink); }
+    .footer-links { display: flex; gap: 18px; }
+
+    /* ---------- Fade-in ---------- */
+    .reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
 </head>
 
-<body class="pt-active">
-    <!-- Navegação -->
-    <header>
-        <nav role="navigation" aria-label="Navegação principal">
-            <div class="container nav-content">
-                <a href="#" class="logo" aria-label="Pedro Henrique - Página inicial">Pedro Henrique</a>
-                
-                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
-                    <i class="fas fa-bars" aria-hidden="true"></i>
-                    <i class="fas fa-times" aria-hidden="true"></i>
-                </button>
+<body>
 
-                <div class="nav-links" id="nav-links" role="menubar">
-                    <a href="#sobre" class="lang-pt" role="menuitem" onclick="closeMenu()">Sobre</a>
-                    <a href="#sobre" class="lang-en" role="menuitem" onclick="closeMenu()">About</a>
-                    
-                    <a href="#tecnologias" class="lang-pt" role="menuitem" onclick="closeMenu()">Tecnologias</a>
-                    <a href="#tecnologias" class="lang-en" role="menuitem" onclick="closeMenu()">Tech Stack</a>
-                    
-                    <a href="#servicos" class="lang-pt" role="menuitem" onclick="closeMenu()">Serviços</a>
-                    <a href="#servicos" class="lang-en" role="menuitem" onclick="closeMenu()">Services</a>
-                    
-                    <a href="#valores" class="lang-pt" role="menuitem" onclick="closeMenu()">Valores</a>
-                    <a href="#valores" class="lang-en" role="menuitem" onclick="closeMenu()">Pricing</a>
-                    
-                    <a href="#contato" class="lang-pt" role="menuitem" onclick="closeMenu()">Contato</a>
-                    <a href="#contato" class="lang-en" role="menuitem" onclick="closeMenu()">Contact</a>
-                    
-                    <a href="https://github.com/0pedrohalmeida0" target="_blank" rel="noopener noreferrer" class="github-link" role="menuitem" onclick="closeMenu()" aria-label="Visitar perfil no GitHub">
-                        <i class="fab fa-github" aria-hidden="true"></i>
-                        <span>GitHub</span>
-                    </a>
-                    
-                    <button onclick="toggleLanguage()" class="lang-btn" aria-label="Mudar idioma">
-                        <span class="lang-pt">EN</span>
-                        <span class="lang-en">PT</span>
-                    </button>
-                </div>
-            </div>
-        </nav>
-    </header>
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark">PH</span>
+        <span>Pedro Henrique</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegação">
+        <a href="#sobre">Sobre</a>
+        <a href="#processo">Processo</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#precos">Preços</a>
+        <a href="#contato" class="nav-cta">Falar comigo</a>
+      </nav>
+      <button class="menu-btn" id="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#processo">Processo</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#precos">Preços</a>
+      <a href="#contato">Falar comigo</a>
+    </div>
+  </header>
 
-    <main>
-        <!-- Hero -->
-        <section class="hero" aria-labelledby="hero-title">
-            <canvas id="particles-canvas" aria-hidden="true"></canvas>
-            <div class="container">
-                <div class="hero-badge fade-in">
-                    <i class="fas fa-code" aria-hidden="true"></i>
-                    <span class="lang-pt">Full Stack Python Developer</span>
-                    <span class="lang-en">Full Stack Python Developer</span>
-                </div>
-                
-                <h1 id="hero-title" class="lang-pt fade-in">
-                    Pedro Henrique <br><span>de Almeida</span>
-                </h1>
-                <h1 id="hero-title" class="lang-en fade-in">
-                    Pedro Henrique <br><span>de Almeida</span>
-                </h1>
-                
-                <p class="hero-subtitle lang-pt fade-in">Construindo software para resolver problemas reais</p>
-                <p class="hero-subtitle lang-en fade-in">Building software to solve real-world problems</p>
-                
-                <p class="lang-pt fade-in">Desenvolvedor Python com formação em Relações Internacionais e experiência em logística, faturamento e processos empresariais. Combino conhecimento de negócio e tecnologia para criar soluções web eficientes.</p>
-                <p class="lang-en fade-in">Python Developer with a degree in International Relations and experience in logistics, invoicing, and business operations. I combine business knowledge and technology to create efficient web solutions.</p>
-                
-                <a href="#contato" class="btn lang-pt fade-in" aria-label="Solicitar orçamento">
-                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                    Entrar em Contato
-                </a>
-                <a href="#contato" class="btn lang-en fade-in" aria-label="Get in touch">
-                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                    Get in Touch
-                </a>
-            </div>
-        </section>
+  <main id="top">
 
-        <!-- Sobre Mim -->
-        <section id="sobre" class="about" aria-labelledby="about-title">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2 id="about-title" class="lang-pt">Sobre Mim</h2>
-                    <h2 id="about-title" class="lang-en">About Me</h2>
-                </div>
-                
-                <div class="about-content">
-                    <div class="about-text fade-in">
-                        <h3 class="lang-pt">Desenvolvedor Full Stack com Visão de Negócio</h3>
-                        <h3 class="lang-en">Full Stack Developer with Business Insight</h3>
-                        
-                        <p class="lang-pt">Sou um profissional da área de Tecnologia com formação em Relações Internacionais e experiência prática em logística, faturamento e processos empresariais. Atualmente desenvolvo soluções web utilizando Python, Django e bancos de dados relacionais.</p>
-                        <p class="lang-en">I'm a Technology professional with a degree in International Relations and hands-on experience in logistics, invoicing, and business operations. Currently building web solutions using Python, Django, and relational databases.</p>
-                        
-                        <p class="lang-pt">Minha abordagem única combina conhecimento técnico com compreensão profunda das necessidades do negócio, permitindo criar sistemas que realmente resolvem problemas operacionais reais.</p>
-                        <p class="lang-en">My unique approach combines technical knowledge with a deep understanding of business needs, allowing me to create systems that truly solve real operational problems.</p>
-                        
-                        <div class="about-info">
-                            <div class="about-info-item">
-                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                                <span class="lang-pt">Bacharel em Relações Internacionais</span>
-                                <span class="lang-en">Bachelor's in International Relations</span>
-                            </div>
-                            <div class="about-info-item">
-                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                                <span>Rio Grande do Sul, Brasil</span>
-                            </div>
-                            <div class="about-info-item">
-                                <i class="fas fa-language" aria-hidden="true"></i>
-                                <span class="lang-pt">Português (Nativo) | Inglês (B2)</span>
-                                <span class="lang-en">Portuguese (Native) | English (B2)</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="about-stats fade-in">
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-code" aria-hidden="true"></i>
-                            </div>
-                            <h4 class="lang-pt">Python & Django</h4>
-                            <h4 class="lang-en">Python & Django</h4>
-                            <p class="lang-pt">Desenvolvimento backend robusto</p>
-                            <p class="lang-en">Robust backend development</p>
-                        </div>
-                        
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-database" aria-hidden="true"></i>
-                            </div>
-                            <h4 class="lang-pt">Bancos de Dados</h4>
-                            <h4 class="lang-en">Databases</h4>
-                            <p class="lang-pt">PostgreSQL, MySQL, SQLite</p>
-                            <p class="lang-en">PostgreSQL, MySQL, SQLite</p>
-                        </div>
-                        
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-cogs" aria-hidden="true"></i>
-                            </div>
-                            <h4 class="lang-pt">Automação</h4>
-                            <h4 class="lang-en">Automation</h4>
-                            <p class="lang-pt">Processos e APIs REST</p>
-                            <p class="lang-en">Processes & REST APIs</p>
-                        </div>
-                        
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-briefcase" aria-hidden="true"></i>
-                            </div>
-                            <h4 class="lang-pt">Negócios</h4>
-                            <h4 class="lang-en">Business</h4>
-                            <p class="lang-pt">Logística, ERP e Faturamento</p>
-                            <p class="lang-en">Logistics, ERP & Invoicing</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
 
-        <!-- Tecnologias -->
-        <section id="tecnologias" class="tech-stack" aria-labelledby="tech-title">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2 id="tech-title" class="lang-pt">Minhas Tecnologias</h2>
-                    <h2 id="tech-title" class="lang-en">My Tech Stack</h2>
-                    <p class="lang-pt">Ferramentas e tecnologias que utilizo para criar soluções eficientes</p>
-                    <p class="lang-en">Tools and technologies I use to create efficient solutions</p>
-                </div>
-                
-                <div class="tech-categories">
-                    <!-- Frontend -->
-                    <div class="tech-category fade-in">
-                        <div class="tech-category-header">
-                            <div class="tech-category-icon">
-                                <i class="fas fa-palette" aria-hidden="true"></i>
-                            </div>
-                            <h3 class="lang-pt">Frontend</h3>
-                            <h3 class="lang-en">Frontend</h3>
-                        </div>
-                        <div class="tech-list">
-                            <div class="tech-item">
-                                <i class="fab fa-html5" style="color: #E34F26;" aria-hidden="true"></i>
-                                <span>HTML5</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fab fa-css3-alt" style="color: #1572B6;" aria-hidden="true"></i>
-                                <span>CSS3</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fab fa-js" style="color: #F7DF1E;" aria-hidden="true"></i>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-code" style="color: #3178C6;" aria-hidden="true"></i>
-                                <span>TypeScript</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fab fa-react" style="color: #61DAFB;" aria-hidden="true"></i>
-                                <span>React</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-n" style="color: #000000;" aria-hidden="true"></i>
-                                <span>Next.js</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-wind" style="color: #38B2AC;" aria-hidden="true"></i>
-                                <span>Tailwind CSS</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Backend -->
-                    <div class="tech-category fade-in">
-                        <div class="tech-category-header">
-                            <div class="tech-category-icon">
-                                <i class="fas fa-server" aria-hidden="true"></i>
-                            </div>
-                            <h3 class="lang-pt">Backend</h3>
-                            <h3 class="lang-en">Backend</h3>
-                        </div>
-                        <div class="tech-list">
-                            <div class="tech-item">
-                                <i class="fab fa-python" style="color: #3776AB;" aria-hidden="true"></i>
-                                <span>Python</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-leaf" style="color: #092E20;" aria-hidden="true"></i>
-                                <span>Django</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-flask" style="color: #000000;" aria-hidden="true"></i>
-                                <span>Flask</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-plug" style="color: #2563eb;" aria-hidden="true"></i>
-                                <span>REST APIs</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Databases -->
-                    <div class="tech-category fade-in">
-                        <div class="tech-category-header">
-                            <div class="tech-category-icon">
-                                <i class="fas fa-database" aria-hidden="true"></i>
-                            </div>
-                            <h3 class="lang-pt">Bancos de Dados</h3>
-                            <h3 class="lang-en">Databases</h3>
-                        </div>
-                        <div class="tech-list">
-                            <div class="tech-item">
-                                <i class="fas fa-database" style="color: #4169E1;" aria-hidden="true"></i>
-                                <span>PostgreSQL</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-database" style="color: #00758F;" aria-hidden="true"></i>
-                                <span>MySQL</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-database" style="color: #07405E;" aria-hidden="true"></i>
-                                <span>SQLite</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Ferramentas -->
-                    <div class="tech-category fade-in">
-                        <div class="tech-category-header">
-                            <div class="tech-category-icon">
-                                <i class="fas fa-tools" aria-hidden="true"></i>
-                            </div>
-                            <h3 class="lang-pt">Ferramentas & Foco</h3>
-                            <h3 class="lang-en">Tools & Focus</h3>
-                        </div>
-                        <div class="tech-list">
-                            <div class="tech-item">
-                                <i class="fas fa-cogs" style="color: #2563eb;" aria-hidden="true"></i>
-                                <span class="lang-pt">Automação de Processos</span>
-                                <span class="lang-en">Process Automation</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-project-diagram" style="color: #2563eb;" aria-hidden="true"></i>
-                                <span class="lang-pt">Arquitetura de Software</span>
-                                <span class="lang-en">Software Architecture</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-mobile-alt" style="color: #2563eb;" aria-hidden="true"></i>
-                                <span>PWAs</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-truck" style="color: #2563eb;" aria-hidden="true"></i>
-                                <span class="lang-pt">Sistemas ERP</span>
-                                <span class="lang-en">ERP Systems</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Serviços -->
-        <section id="servicos" class="services" aria-labelledby="services-title">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2 id="services-title" class="lang-pt">O Que Posso Fazer</h2>
-                    <h2 id="services-title" class="lang-en">What I Can Do</h2>
-                    <p class="lang-pt">Soluções personalizadas para otimizar seu negócio</p>
-                    <p class="lang-en">Custom solutions to optimize your business</p>
-                </div>
-                
-                <div class="cards-grid">
-                    <!-- Card 1 -->
-                    <article class="card fade-in">
-                        <div class="card-icon" aria-hidden="true">
-                            <i class="fas fa-truck-fast"></i>
-                        </div>
-                        <h3 class="lang-pt">Automação Logística</h3>
-                        <h3 class="lang-en">Logistics Automation</h3>
-                        <p class="lang-pt">Criação de scripts e fluxos automatizados para processos de expedição e faturamento. Redução de erros em tarefas repetitivas e integração eficiente de bancos de dados relacionais.</p>
-                        <p class="lang-en">Creation of scripts and automated workflows for shipping and billing processes. Reduction of errors in repetitive tasks and efficient relational database integration.</p>
-                    </article>
-
-                    <!-- Card 2 -->
-                    <article class="card fade-in">
-                        <div class="card-icon" aria-hidden="true">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3 class="lang-pt">Plataformas Educacionais</h3>
-                        <h3 class="lang-en">Educational Platforms</h3>
-                        <p class="lang-pt">Desenvolvimento de sistemas de gestão web para controle de alunos, estruturação de portais educacionais, agendamento de turmas e tratamento lógico de dados no backend.</p>
-                        <p class="lang-en">Development of web management systems for student control, structuring of educational portals, class scheduling, and backend logical data processing.</p>
-                    </article>
-
-                    <!-- Card 3 -->
-                    <article class="card fade-in">
-                        <div class="card-icon" aria-hidden="true">
-                            <i class="fas fa-store"></i>
-                        </div>
-                        <h3 class="lang-pt">Gestão Comercial</h3>
-                        <h3 class="lang-en">Commercial Management</h3>
-                        <p class="lang-pt">Sistemas sob medida para pequenos negócios. Controle de vendas, fluxo de caixa, gestão de estoque e cadastro de clientes em plataformas intuitivas.</p>
-                        <p class="lang-en">Custom systems for small businesses. Sales tracking, cash flow, inventory management, and customer registration on intuitive platforms.</p>
-                    </article>
-
-                    <!-- Card 4 -->
-                    <article class="card fade-in">
-                        <div class="card-icon" aria-hidden="true">
-                            <i class="fas fa-plug"></i>
-                        </div>
-                        <h3 class="lang-pt">APIs REST</h3>
-                        <h3 class="lang-en">REST APIs</h3>
-                        <p class="lang-pt">Desenvolvimento de APIs robustas e bem documentadas para integração entre sistemas, utilizando Django REST Framework e boas práticas de arquitetura.</p>
-                        <p class="lang-en">Development of robust and well-documented APIs for system integration, using Django REST Framework and architecture best practices.</p>
-                    </article>
-
-                    <!-- Card 5 -->
-                    <article class="card fade-in">
-                        <div class="card-icon" aria-hidden="true">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3 class="lang-pt">Sistemas ERP</h3>
-                        <h3 class="lang-en">ERP Systems</h3>
-                        <p class="lang-pt">Criação de sistemas integrados de gestão empresarial com módulos de faturamento, controle de estoque, fluxo de caixa e relatórios personalizados.</p>
-                        <p class="lang-en">Creation of integrated business management systems with billing, inventory control, cash flow, and custom reporting modules.</p>
-                    </article>
-
-                    <!-- Card 6 -->
-                    <article class="card fade-in">
-                        <div class="card-icon" aria-hidden="true">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h3 class="lang-pt">Progressive Web Apps</h3>
-                        <h3 class="lang-en">Progressive Web Apps</h3>
-                        <p class="lang-pt">Desenvolvimento de PWAs que combinam o melhor da web e de aplicativos móveis, oferecendo experiência offline e instalação direta no dispositivo.</p>
-                        <p class="lang-en">Development of PWAs that combine the best of web and mobile apps, offering offline experience and direct device installation.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Valores -->
-        <section id="valores" class="pricing" aria-labelledby="pricing-title">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <h2 id="pricing-title" class="lang-pt">Investimento</h2>
-                    <h2 id="pricing-title" class="lang-en">Pricing</h2>
-                </div>
-                
-                <div class="pricing-box fade-in">
-                    <i class="fas fa-handshake pricing-icon" aria-hidden="true"></i>
-                    <h3 class="lang-pt">De integrações simples a sistemas completos (Valores a partir de R$ 200)</h3>
-                    <h3 class="lang-en">From simple integrations to complete systems (Prices starting from US$ 40)</h3>
-                    <p class="lang-pt">Os valores são adaptáveis e negociáveis de acordo com a complexidade do projeto, o volume de dados tratados e os requisitos de integração da sua empresa. O foco é entregar o melhor custo-benefício para a sua operação.</p>
-                    <p class="lang-en">Prices are flexible and negotiable depending on the project's complexity, data volume, and your company's integration requirements. The goal is to deliver the best cost-benefit for your operation.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contato -->
-        <section id="contato" class="contact" aria-labelledby="contact-title">
-            <div class="container form-container">
-                <div class="section-header fade-in">
-                    <h2 id="contact-title" class="lang-pt">Vamos Conversar?</h2>
-                    <h2 id="contact-title" class="lang-en">Let's Talk?</h2>
-                    <p class="lang-pt">Entre em contato e vamos transformar sua ideia em realidade</p>
-                    <p class="lang-en">Get in touch and let's turn your idea into reality</p>
-                </div>
-                    
-                <div id="socialmedia" class="fade-in">
-                    <a href="https://wa.me/5551991803676" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="Contato via WhatsApp">
-                        <i class="fab fa-whatsapp" style="color: #25d366;" aria-hidden="true"></i>
-                        <span class="lang-pt">WhatsApp: (51) 99180-3676</span>
-                        <span class="lang-en">WhatsApp: +55 (51) 99180-3676</span>
-                    </a>
-                    
-                    <a href="mailto:phdealmeida3@gmail.com" class="contact-item" aria-label="Contato via e-mail">
-                        <i class="fas fa-envelope" style="color: #ffffff;" aria-hidden="true"></i>
-                        <span>E-mail: phdealmeida3@gmail.com</span>
-                    </a>
-                    
-                    <a href="https://www.linkedin.com/in/pedrohenriquedealmeida3" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="Perfil no LinkedIn">
-                        <i class="fab fa-linkedin" style="color: #0077B5;" aria-hidden="true"></i>
-                        <span>LinkedIn</span>
-                    </a>
-                </div>
-
-                <div id="ou" class="fade-in">
-                    <p class="lang-pt">OU</p>
-                    <p class="lang-en">OR</p>
-                </div>
-                            
-                <form id="contact-form" action="https://formspree.io/f/mjgqzpnw" method="POST" class="fade-in" novalidate>
-                    <!-- Honeypot anti-spam -->
-                    <div class="hp-field" aria-hidden="true">
-                        <label>Não preencha este campo</label>
-                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="lang-pt" for="nome">Nome *</label>
-                        <label class="lang-en" for="nome">Name *</label>
-                        <input type="text" id="nome" name="nome" required placeholder="Seu nome completo" autocomplete="name">
-                    </div>
-                    <div class="form-group">
-                        <label class="lang-pt" for="email">E-mail *</label>
-                        <label class="lang-en" for="email">Email *</label>
-                        <input type="email" id="email" name="email" required placeholder="seu@email.com" autocomplete="email">
-                    </div>
-                    <div class="form-group">
-                        <label class="lang-pt" for="mensagem">Mensagem *</label>
-                        <label class="lang-en" for="mensagem">Message *</label>
-                        <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Conte-me sobre seu projeto..."></textarea>
-                    </div>
-                    <button type="submit" id="submit-btn" class="btn btn-full">
-                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                        <span class="lang-pt">Enviar Mensagem</span>
-                        <span class="lang-en">Send Message</span>
-                    </button>
-                </form>
-                <div id="form-status" role="alert" aria-live="polite"></div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer role="contentinfo">
-        <div class="container">
-            <p>&copy; 2026 Pedro Henrique de Almeida. <span class="lang-pt">Todos os direitos reservados.</span><span class="lang-en">All rights reserved.</span></p>
-            <p>
-                <a href="https://github.com/0pedrohalmeida0" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <i class="fab fa-github" aria-hidden="true"></i> GitHub
-                </a>
-                &nbsp;|&nbsp;
-                <a href="https://www.linkedin.com/in/pedrohenriquedealmeida3" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
-                </a>
+          <div class="hero-text">
+            <span class="eyebrow"><span class="dot"></span>Sistemas sob medida · Full Stack Python</span>
+            <h1>
+              Software construído <span class="hl">especificamente</span> para o seu negócio.
+            </h1>
+            <p class="lede">
+              Sou <strong>Pedro Henrique</strong>, desenvolvedor full stack. Não vendo templates, não revendo plataforma de prateleira. Eu desenho e construo <strong>sistemas sob medida</strong> — da landing page que converte ao ERP que opera a sua empresa, todos calibrados nas suas regras, dados e fluxo.
             </p>
-            <p class="footer-philosophy">
-                <span class="lang-pt">"Construindo software para resolver problemas operacionais reais."</span>
-                <span class="lang-en">"Building software to solve real-world operational problems."</span>
-            </p>
+            <div class="hero-ctas">
+              <a href="#contato" class="btn btn-primary">
+                Solicitar orçamento
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#projetos" class="btn btn-ghost">Ver projetos</a>
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat">
+                <span class="stat-num">7+</span>
+                <span class="stat-label">Projetos públicos</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num">21</span>
+                <span class="stat-label">Repositórios no GitHub</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num">123</span>
+                <span class="stat-label">Testes automatizados</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="profile-card" aria-label="Perfil">
+            <div class="profile-head">
+              <div class="avatar">PH</div>
+              <div>
+                <div class="profile-name">Pedro Henrique de Almeida</div>
+                <div class="profile-role">Engenheiro de Software · RS, Brasil</div>
+              </div>
+            </div>
+            <div class="profile-divider"></div>
+            <div class="profile-rows">
+              <div class="profile-row">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                <span class="label">Status</span>
+                <span class="status-pill"><span class="pulse"></span>Aceitando projetos</span>
+              </div>
+              <div class="profile-row">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <span class="label">Foco</span>
+                <span>Python · Django · Flask</span>
+              </div>
+              <div class="profile-row">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span class="label">Idiomas</span>
+                <span>PT nativo · EN B2</span>
+              </div>
+              <div class="profile-row">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+                <span class="label">Formação</span>
+                <span>Bacharel em Relações Internacionais</span>
+              </div>
+            </div>
+          </aside>
+
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <!-- Botão Voltar ao Topo -->
-    <button class="back-to-top" id="back-to-top" aria-label="Voltar ao topo" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up" aria-hidden="true"></i>
-    </button>
+    <!-- ============ ABOUT ============ -->
+    <section id="sobre">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span>Quem está por trás</span>
+          <h2 style="margin-top:16px;">Tecnologia com visão de negócio, não só código.</h2>
+          <p class="sub">Formado em Relações Internacionais, trabalhei em logística, faturamento e operações antes de mergulhar em desenvolvimento. Isso muda a forma como eu construo software — não pergunto só <em>"o que você quer?"</em>, pergunto <em>"qual problema estamos resolvendo?"</em>.</p>
+        </div>
 
-    
+        <div class="about-grid">
+          <div class="about-prose reveal">
+            <p>Cada sistema que entrego nasce de uma <strong>conversa de descoberta</strong>: entender o processo atual, mapear as regras de negócio, identificar gargalos, decidir o que vira software e o que fica fora. Depois disso, desenho a arquitetura, escolho as ferramentas certas para o seu caso (não para o meu portfólio) e construo com código testado, versionado e pronto para crescer.</p>
+            <p>Trabalho com <strong>Python, Django e Flask</strong> no backend, bancos relacionais robustos, integrações por API REST e front-ends leves. Quando o projeto pede, entrego PWA instalável, dashboards analíticos ou interfaces tridimensionais com Three.js.</p>
+            <div class="pull">
+              "Não entrego o sistema mais sofisticado — entrego o sistema certo para o seu momento e a sua operação."
+            </div>
+          </div>
+
+          <div class="diff-card reveal">
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+              Por que sistemas sob medida
+            </h3>
+            <ul class="diff-list">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg><span><strong>Regras que só o seu negócio tem.</strong> Templates forçam você a adaptar a operação ao software. Aqui é o contrário.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg><span><strong>Sem mensalidade surpresa.</strong> Você é dono do código, do banco e do deploy.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg><span><strong>Integrações nativas.</strong> Conecto em ERPs, gateways, APIs externas e no que você já usa.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg><span><strong>Escala sob controle.</strong> Começa enxuto, cresce com você — sem trocar de plataforma no meio do caminho.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg><span><strong>Suporte direto comigo.</strong> Sem fila de ticket, sem atendente que não entende o projeto.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section id="processo" class="alt-bg">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span>Como eu trabalho</span>
+          <h2 style="margin-top:16px;">Do problema ao sistema em produção, em 5 etapas.</h2>
+          <p class="sub">Processo testado em projetos de diferentes complexidades. Transparente, com checkpoints claros e sem retrabalho escondido.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="step">
+            <span class="step-num">01</span>
+            <div class="step-title">Descoberta</div>
+            <p class="step-desc">Conversa profunda para mapear o problema, o fluxo atual, as regras de negócio e o que "sucesso" significa no seu contexto.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <div class="step-title">Arquitetura</div>
+            <p class="step-desc">Desenho da solução: stack, modelo de dados, módulos, integrações. Você aprova o plano antes de uma linha de código ser escrita.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">03</span>
+            <div class="step-title">Desenvolvimento</div>
+            <p class="step-desc">Sprints curtas com entregas parciais. Você vê o sistema crescendo, testa em ambiente real e dá feedback contínuo.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">04</span>
+            <div class="step-title">Deploy & Treinamento</div>
+            <p class="step-desc">Publicação em produção (PythonAnywhere, Netlify, VPS, sua escolha), configuração de domínio, SSL e treinamento da equipe.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">05</span>
+            <div class="step-title">Suporte contínuo</div>
+            <p class="step-desc">Manutenção preventiva, novas features e ajustes sob demanda. Você me chama direto, sem intermediários.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projetos">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span>Projetos em produção</span>
+          <h2 style="margin-top:16px;">7 sistemas reais, rodando e resolvendo problemas reais.</h2>
+          <p class="sub">Cada projeto abaixo está publicado, com código aberto no GitHub e versão demo ao vivo (exceto os privados). Stack e responsabilidades explicados honestamente.</p>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- FlowLog -->
+          <article class="proj reveal" style="--stripe:#10b981;--icon-bg:#d1fae5;--icon-fg:#047857;">
+            <div class="proj-head">
+              <div class="proj-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
+              </div>
+              <span class="proj-tag">Backend · CLI</span>
+            </div>
+            <h3 class="proj-title">FlowLog</h3>
+            <p class="proj-desc">Sistema de gestão de estoque em terminal com RBAC hierárquico (3 níveis), controle de concorrência, curva ABC, backup automático e 123 testes automatizados.</p>
+            <div class="proj-stack">
+              <span class="chip">Python 3.x</span>
+              <span class="chip">MySQL 8</span>
+              <span class="chip">bcrypt</span>
+              <span class="chip">pytest</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://github.com/0pedrohalmeida0/FlowLog" target="_blank" rel="noopener" class="proj-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.3-3.3-.1-.3-.6-1.6.1-3.3 0 0 1-.3 3.3 1.2.9-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.2 3 .1 3.3.8.9 1.3 2 1.3 3.3 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6C20.6 22.3 24 17.8 24 12.5 24 5.9 18.6.5 12 .5z"/></svg>
+                Código
+              </a>
+            </div>
+          </article>
+
+          <!-- Vocabulario Erudito -->
+          <article class="proj reveal" style="--stripe:#0ea5e9;--icon-bg:#e0f2fe;--icon-fg:#0369a1;">
+            <div class="proj-head">
+              <div class="proj-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              </div>
+              <span class="proj-tag">PWA · Full Stack</span>
+            </div>
+            <h3 class="proj-title">Vocabulário Erudito</h3>
+            <p class="proj-desc">PWA instalável para enriquecimento vocabular em PT/EN/DE. Service Worker, push notifications diárias e modo offline — funciona como app nativo no celular.</p>
+            <div class="proj-stack">
+              <span class="chip">Django</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">PWA</span>
+              <span class="chip">Web Push API</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://vocabularioerudito.pythonanywhere.com/" target="_blank" rel="noopener" class="proj-link cta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                Demo ao vivo
+              </a>
+              <a href="https://github.com/0pedrohalmeida0/Vocabulario-Erudito" target="_blank" rel="noopener" class="proj-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.3-3.3-.1-.3-.6-1.6.1-3.3 0 0 1-.3 3.3 1.2.9-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.2 3 .1 3.3.8.9 1.3 2 1.3 3.3 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6C20.6 22.3 24 17.8 24 12.5 24 5.9 18.6.5 12 .5z"/></svg>
+                Código
+              </a>
+            </div>
+          </article>
+
+          <!-- Projeto Oracle -->
+          <article class="proj reveal" style="--stripe:#8b5cf6;--icon-bg:#ede9fe;--icon-fg:#6d28d9;">
+            <div class="proj-head">
+              <div class="proj-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10M12 2a15 15 0 0 0-4 10 15 15 0 0 0 4 10"/></svg>
+              </div>
+              <span class="proj-tag">3D · Frontend</span>
+            </div>
+            <h3 class="proj-title">Projeto Oracle</h3>
+            <p class="proj-desc">Esfera 3D interativa em WebGL respondendo a mouse com física real (lerp, inércia, impulso no clique). Demo técnico de domínio de Three.js.</p>
+            <div class="proj-stack">
+              <span class="chip">Three.js</span>
+              <span class="chip">WebGL</span>
+              <span class="chip">HTML5</span>
+              <span class="chip">CSS3</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://0pedrohalmeida0.github.io/Projeto-Oracle/" target="_blank" rel="noopener" class="proj-link cta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                Demo ao vivo
+              </a>
+              <a href="https://github.com/0pedrohalmeida0/Projeto-Oracle" target="_blank" rel="noopener" class="proj-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.3-3.3-.1-.3-.6-1.6.1-3.3 0 0 1-.3 3.3 1.2.9-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.2 3 .1 3.3.8.9 1.3 2 1.3 3.3 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6C20.6 22.3 24 17.8 24 12.5 24 5.9 18.6.5 12 .5z"/></svg>
+                Código
+              </a>
+            </div>
+          </article>
+
+          <!-- FinControl -->
+          <article class="proj reveal" style="--stripe:#f59e0b;--icon-bg:#fef3c7;--icon-fg:#b45309;">
+            <div class="proj-head">
+              <div class="proj-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 6-6"/></svg>
+              </div>
+              <span class="proj-tag">Finanças · Web App</span>
+            </div>
+            <h3 class="proj-title">FinControl</h3>
+            <p class="proj-desc">Controle financeiro pessoal com rendas, despesas, investimentos, projeção futura e gráficos de saúde financeira. Autenticação JWT, dados isolados por usuário.</p>
+            <div class="proj-stack">
+              <span class="chip">Flask 3</span>
+              <span class="chip">SQLite</span>
+              <span class="chip">Chart.js</span>
+              <span class="chip">JWT</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://fincontrol.pythonanywhere.com/index.html" target="_blank" rel="noopener" class="proj-link cta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                Demo ao vivo
+              </a>
+              <a href="https://github.com/0pedrohalmeida0/Fin_Control" target="_blank" rel="noopener" class="proj-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.3-3.3-.1-.3-.6-1.6.1-3.3 0 0 1-.3 3.3 1.2.9-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.2 3 .1 3.3.8.9 1.3 2 1.3 3.3 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6C20.6 22.3 24 17.8 24 12.5 24 5.9 18.6.5 12 .5z"/></svg>
+                Código
+              </a>
+            </div>
+          </article>
+
+          <!-- LeitorQR -->
+          <article class="proj reveal" style="--stripe:#f43f5e;--icon-bg:#ffe4e6;--icon-fg:#be123c;">
+            <div class="proj-head">
+              <div class="proj-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v3M14 20h3M20 20h1"/></svg>
+              </div>
+              <span class="proj-tag">Patrimônio · API</span>
+            </div>
+            <h3 class="proj-title">LeitorQR — Controle de Patrimônio</h3>
+            <p class="proj-desc">Sistema corporativo de controle patrimonial via QR Code e crachá. Cadastro, retirada, devolução, histórico paginado e exportação CSV — substituiu um sistema legado em CLI.</p>
+            <div class="proj-stack">
+              <span class="chip">Flask</span>
+              <span class="chip">SQLite</span>
+              <span class="chip">QRCode</span>
+              <span class="chip">REST API</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://github.com/0pedrohalmeida0/leitorQR" target="_blank" rel="noopener" class="proj-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.3-3.3-.1-.3-.6-1.6.1-3.3 0 0 1-.3 3.3 1.2.9-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.2 3 .1 3.3.8.9 1.3 2 1.3 3.3 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6C20.6 22.3 24 17.8 24 12.5 24 5.9 18.6.5 12 .5z"/></svg>
+                Código
+              </a>
+            </div>
+          </article>
+
+          <!-- Fuel Consumption API -->
+          <article class="proj reveal" style="--stripe:#0ea5e9;--icon-bg:#e0f2fe;--icon-fg:#0369a1;">
+            <div class="proj-head">
+              <div class="proj-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 22V4a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v18M3 13h11M14 8h2l2 3v6a2 2 0 0 1-2 2M17 12v.01"/></svg>
+              </div>
+              <span class="proj-tag">Cálculo · Frontend</span>
+            </div>
+            <h3 class="proj-title">Fuel Consumption API</h3>
+            <p class="proj-desc">Calculadora de consumo de combustível com 13 fatores de correção (altitude, temperatura, carga, AC, ethanol blend…). Engine JS portada de Python com validação 0,05%.</p>
+            <div class="proj-stack">
+              <span class="chip">JavaScript</span>
+              <span class="chip">Chart.js</span>
+              <span class="chip">ES Modules</span>
+              <span class="chip">9 presets BR</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://consumodecombustivel.netlify.app/" target="_blank" rel="noopener" class="proj-link cta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                Demo ao vivo
+              </a>
+              <a href="https://github.com/0pedrohalmeida0/Fuel-Consumption-API" target="_blank" rel="noopener" class="proj-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.3-3.3-.1-.3-.6-1.6.1-3.3 0 0 1-.3 3.3 1.2.9-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.2 3 .1 3.3.8.9 1.3 2 1.3 3.3 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6C20.6 22.3 24 17.8 24 12.5 24 5.9 18.6.5 12 .5z"/></svg>
+                Código
+              </a>
+            </div>
+          </article>
+
+          <!-- Portal Mirella Bays (private) -->
+          <article class="proj reveal" style="--stripe:#1e293b;--icon-bg:#f1f5f9;--icon-fg:#0f172a;">
+            <div class="proj-head">
+              <div class="proj-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12 12 0 0 1 .665 6.479A11.95 11.95 0 0 0 12 20.055a11.95 11.95 0 0 0-6.824-2.998 12.1 12.1 0 0 1 .665-6.479L12 14z"/><path d="M12 14l9-5-9-5-9 5 9 5zm0 0v6.7"/></svg>
+              </div>
+              <span class="proj-tag">Cliente · Privado</span>
+            </div>
+            <h3 class="proj-title">Portal Mirella Bays</h3>
+            <p class="proj-desc">Gestão de alunos (ativos/inativos), agenda de aulas, publicação de conteúdo. Deploy em PythonAnywhere com collectstatic, WSGI e migrações em tempo real.</p>
+            <div class="proj-stack">
+              <span class="chip">Django</span>
+              <span class="chip">SQLite</span>
+              <span class="chip">HTML/CSS/JS</span>
+              <span class="chip">PythonAnywhere</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://fraubays.netlify.app/" target="_blank" rel="noopener" class="proj-link cta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                Landing da cliente
+              </a>
+              <span class="proj-link" style="color: var(--ink-4); cursor: default;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Repositório privado
+              </span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STACK ============ -->
+    <section class="alt-bg" style="padding-top: 80px;">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span>Stack tecnológica</span>
+          <h2 style="margin-top:16px;">Ferramentas certas, não ferramentas da moda.</h2>
+          <p class="sub">Trabalho com o que é sólido, testado e adequado para cada tipo de problema. Sem hype, sem dependência de framework da semana.</p>
+        </div>
+
+        <div class="stack-grid">
+          <div class="stack-block">
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+              Backend
+            </h3>
+            <div class="bench-row"><span class="label">Python</span><div class="bench-bar"><div class="bench-fill" style="width:95%"></div></div><span class="bench-val">95</span></div>
+            <div class="bench-row"><span class="label">Django</span><div class="bench-bar"><div class="bench-fill" style="width:88%"></div></div><span class="bench-val">88</span></div>
+            <div class="bench-row"><span class="label">Flask</span><div class="bench-bar"><div class="bench-fill" style="width:82%"></div></div><span class="bench-val">82</span></div>
+            <div class="bench-row"><span class="label">REST APIs</span><div class="bench-bar"><div class="bench-fill" style="width:85%"></div></div><span class="bench-val">85</span></div>
+            <div class="bench-row"><span class="label">Automação</span><div class="bench-bar"><div class="bench-fill" style="width:80%"></div></div><span class="bench-val">80</span></div>
+          </div>
+
+          <div class="stack-block">
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/></svg>
+              Bancos & Dados
+            </h3>
+            <div class="bench-row"><span class="label">PostgreSQL</span><div class="bench-bar"><div class="bench-fill" style="width:80%"></div></div><span class="bench-val">80</span></div>
+            <div class="bench-row"><span class="label">MySQL</span><div class="bench-bar"><div class="bench-fill" style="width:85%"></div></div><span class="bench-val">85</span></div>
+            <div class="bench-row"><span class="label">SQLite</span><div class="bench-bar"><div class="bench-fill" style="width:90%"></div></div><span class="bench-val">90</span></div>
+            <div class="bench-row"><span class="label">Modelagem</span><div class="bench-bar"><div class="bench-fill" style="width:82%"></div></div><span class="bench-val">82</span></div>
+            <div class="bench-row"><span class="label">SQL avançado</span><div class="bench-bar"><div class="bench-fill" style="width:78%"></div></div><span class="bench-val">78</span></div>
+          </div>
+
+          <div class="stack-block">
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 3h20M5 3v18M19 3v18M9 21h6M5 9h14"/></svg>
+              Frontend
+            </h3>
+            <div class="bench-row"><span class="label">HTML5 / CSS3</span><div class="bench-bar"><div class="bench-fill" style="width:92%"></div></div><span class="bench-val">92</span></div>
+            <div class="bench-row"><span class="label">JavaScript</span><div class="bench-bar"><div class="bench-fill" style="width:85%"></div></div><span class="bench-val">85</span></div>
+            <div class="bench-row"><span class="label">TypeScript</span><div class="bench-bar"><div class="bench-fill" style="width:72%"></div></div><span class="bench-val">72</span></div>
+            <div class="bench-row"><span class="label">React / Next.js</span><div class="bench-bar"><div class="bench-fill" style="width:70%"></div></div><span class="bench-val">70</span></div>
+            <div class="bench-row"><span class="label">Tailwind CSS</span><div class="bench-bar"><div class="bench-fill" style="width:88%"></div></div><span class="bench-val">88</span></div>
+            <div class="bench-row"><span class="label">Three.js</span><div class="bench-bar"><div class="bench-fill" style="width:65%"></div></div><span class="bench-val">65</span></div>
+          </div>
+
+          <div class="stack-block">
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+              Práticas & Deploy
+            </h3>
+            <div class="bench-row"><span class="label">Git / GitHub</span><div class="bench-bar"><div class="bench-fill" style="width:92%"></div></div><span class="bench-val">92</span></div>
+            <div class="bench-row"><span class="label">CI / GitHub Actions</span><div class="bench-bar"><div class="bench-fill" style="width:75%"></div></div><span class="bench-val">75</span></div>
+            <div class="bench-row"><span class="label">Testes (pytest)</span><div class="bench-bar"><div class="bench-fill" style="width:80%"></div></div><span class="bench-val">80</span></div>
+            <div class="bench-row"><span class="label">PythonAnywhere</span><div class="bench-bar"><div class="bench-fill" style="width:90%"></div></div><span class="bench-val">90</span></div>
+            <div class="bench-row"><span class="label">Netlify</span><div class="bench-bar"><div class="bench-fill" style="width:85%"></div></div><span class="bench-val">85</span></div>
+            <div class="bench-row"><span class="label">PWA / Service Worker</span><div class="bench-bar"><div class="bench-fill" style="width:78%"></div></div><span class="bench-val">78</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section id="servicos">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span>O que eu entrego</span>
+          <h2 style="margin-top:16px;">Tudo que posso construir para você, em qualquer complexidade.</h2>
+          <p class="sub">Da landing page de 1 página ao ERP multi-módulo. O escopo é o que você precisa, não o que cabe num pacote.</p>
+        </div>
+
+        <div class="services-grid">
+
+          <div class="svc reveal">
+            <div class="svc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+            </div>
+            <div class="svc-title">Landing Pages de Alta Conversão</div>
+            <p class="svc-desc">Página única focada em campanha, lead ou venda. Copy persuasiva, design único, rastreamento de eventos e integração com WhatsApp/email/CRMs.</p>
+            <div class="svc-from">A partir de <strong>R$ 1.500</strong> · 1-2 semanas</div>
+          </div>
+
+          <div class="svc reveal">
+            <div class="svc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div class="svc-title">Sites Institucionais</div>
+            <p class="svc-desc">Presença digital sólida para sua empresa: home, sobre, serviços, contato, blog. Design profissional, SEO básico, performance e manutenção simples.</p>
+            <div class="svc-from">A partir de <strong>R$ 3.500</strong> · 3-4 semanas</div>
+          </div>
+
+          <div class="svc reveal">
+            <div class="svc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="svc-title">Sistemas Web Personalizados</div>
+            <p class="svc-desc">Aplicações com login, dashboards, APIs, integrações. O sistema que resolve o seu problema específico — não uma plataforma genérica que você precisa moldar.</p>
+            <div class="svc-from">A partir de <strong>R$ 8.000</strong> · 4-8 semanas</div>
+          </div>
+
+          <div class="svc reveal">
+            <div class="svc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>
+            </div>
+            <div class="svc-title">ERPs & CRMs Sob Medida</div>
+            <p class="svc-desc">Gestão integrada: faturamento, estoque, clientes, agenda, financeiro, relatórios. Os módulos que o seu negócio precisa, conectados como você precisa.</p>
+            <div class="svc-from">A partir de <strong>R$ 18.000</strong> · 2-4 meses</div>
+          </div>
+
+          <div class="svc reveal">
+            <div class="svc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+            </div>
+            <div class="svc-title">PWAs & Apps Instaláveis</div>
+            <p class="svc-desc">Aplicações web que funcionam offline, enviam notificações push e se instalam no celular como app nativo. Sem precisar publicar na App Store.</p>
+            <div class="svc-from">A partir de <strong>R$ 5.000</strong> · 3-5 semanas</div>
+          </div>
+
+          <div class="svc reveal">
+            <div class="svc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="svc-title">Automação de Processos</div>
+            <p class="svc-desc">Eliminação de tarefas manuais repetitivas. Integração entre sistemas, scripts de processamento, dashboards de monitoramento. Sua equipe foca no que importa.</p>
+            <div class="svc-from">A partir de <strong>R$ 1.200</strong> · 1-3 semanas</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CASE STUDY ============ -->
+    <section style="background: var(--bg);">
+      <div class="container">
+        <div class="case">
+          <div class="case-grid">
+            <div class="case-text">
+              <span class="case-tag">// Caso real · Cliente ativo</span>
+              <h2 style="margin-bottom: 18px;">Portal Mirella Bays: <span class="accent">gestão escolar</span> do zero ao ar em 4 semanas.</h2>
+              <p>Professora de alemão com turmas crescendo sem controle, a Mirella precisava de um sistema para <strong>gerenciar alunos ativos e inativos</strong>, organizar a agenda de aulas e publicar conteúdo para os alunos — sem pagar mensalidade de SaaS pronto que não cabia no fluxo dela.</p>
+              <p>Construí um portal em Django, com módulos de gestão de alunos, agenda e área de conteúdo, deploy em PythonAnywhere, collectstatic, WSGI configurado e migrações aplicadas em produção.</p>
+
+              <div class="case-stats">
+                <div class="case-stat">
+                  <div class="n">4 sem</div>
+                  <div class="l">Do briefing ao deploy</div>
+                </div>
+                <div class="case-stat">
+                  <div class="n">3</div>
+                  <div class="l">Módulos integrados</div>
+                </div>
+                <div class="case-stat">
+                  <div class="n">0</div>
+                  <div class="l">Mensalidade de plataforma</div>
+                </div>
+                <div class="case-stat">
+                  <div class="n">100%</div>
+                  <div class="l">Sob medida para o fluxo</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="case-modules">
+              <h4>// Módulos entregues</h4>
+              <div class="mod-list">
+                <div class="mod"><span class="mnum">01</span><span>Gestão de alunos (ativos/inativos, histórico, anotações)</span></div>
+                <div class="mod"><span class="mnum">02</span><span>Agenda de aulas com reagendamento e controle de presença</span></div>
+                <div class="mod"><span class="mnum">03</span><span>Publicação de conteúdo (materiais, exercícios, comunicados)</span></div>
+                <div class="mod"><span class="mnum">04</span><span>Admin Django customizado com permissões por papel</span></div>
+                <div class="mod"><span class="mnum">05</span><span>Deploy em PythonAnywhere com collectstatic + WSGI</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section id="precos" class="alt-bg">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span>Investimento</span>
+          <h2 style="margin-top:16px;">Valores alinhados com o mercado, ajustados ao seu projeto.</h2>
+          <p class="sub">Faixas baseadas em pesquisa de mercado brasileiro 2026 (Metodo Viral, AchEi Profissional, Wise Data, Green Digital, SHINIER, OWN, Aintegrare, entre outros). O valor final é definido após a descoberta.</p>
+        </div>
+
+        <div class="pricing-grid">
+
+          <div class="price-card">
+            <div class="price-name">Landing Page</div>
+            <div class="price-tagline">1 página focada em conversão</div>
+            <div class="price-amount">
+              <span class="from">A partir de</span>
+              <span class="value">R$ 1.500</span>
+              <span class="unit">/ projeto</span>
+            </div>
+            <ul class="price-feats">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Design único e responsivo</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Copy revisada e CTA otimizado</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Integração com WhatsApp/email</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Pixel do Meta/Google configurado</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Entrega em 1–2 semanas</li>
+            </ul>
+            <a href="#contato" class="btn btn-ghost price-cta">Pedir orçamento</a>
+          </div>
+
+          <div class="price-card featured">
+            <span class="featured-badge">Mais contratado</span>
+            <div class="price-name">Sistema Web Sob Medida</div>
+            <div class="price-tagline">Aplicação completa com login, dashboards e APIs</div>
+            <div class="price-amount">
+              <span class="from">A partir de</span>
+              <span class="value">R$ 8.000</span>
+              <span class="unit">/ projeto</span>
+            </div>
+            <ul class="price-feats">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Regras de negócio modeladas para você</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Autenticação, perfis e permissões</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Painel admin + área do cliente</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>API REST documentada</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Deploy em produção + treinamento</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>30 dias de suporte incluso</li>
+            </ul>
+            <a href="#contato" class="btn btn-accent price-cta">Solicitar proposta</a>
+          </div>
+
+          <div class="price-card">
+            <div class="price-name">ERP / Multi-módulo</div>
+            <div class="price-tagline">Gestão integrada sob medida</div>
+            <div class="price-amount">
+              <span class="from">A partir de</span>
+              <span class="value">R$ 18.000</span>
+              <span class="unit">/ projeto</span>
+            </div>
+            <ul class="price-feats">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Escopo em sprints com entregas parciais</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Módulos de faturamento, estoque, financeiro</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Integração com APIs externas (ERP, banco, etc.)</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Relatórios e dashboards analíticos</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Testes automatizados + CI</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Suporte e evolução contínua</li>
+            </ul>
+            <a href="#contato" class="btn btn-ghost price-cta">Conversar</a>
+          </div>
+
+        </div>
+
+        <p style="margin-top: 28px; text-align: center; font-size: 13.5px; color: var(--ink-3);">
+          ✦ Manutenção mensal opcional a partir de <strong style="color: var(--ink);">R$ 400/mês</strong> · Hospedagem e domínio cobrados à parte
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contato">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><span class="dot"></span>Vamos começar</span>
+          <h2 style="margin-top:16px;">Conte o problema. Eu devolvo a solução.</h2>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p>Respondo em até 24h. Sem robô, sem script — eu mesmo leio cada mensagem e retorno com perguntas concretas para entender o seu contexto antes de qualquer proposta.</p>
+
+            <div class="contact-list">
+              <a class="contact-item" href="https://wa.me/5551991803676?text=Ol%C3%A1%20Pedro%2C%20vim%20pelo%20seu%20portf%C3%B3lio" target="_blank" rel="noopener">
+                <div class="ic green">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.94 11.94 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.2-1.62A12 12 0 0012 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.19-3.5-8.5zM12 21.8a9.8 9.8 0 0 1-5.24-1.44l-.38-.22-3.69.97.99-3.6-.25-.37A9.83 9.83 0 0 1 2.2 12 9.8 9.8 0 0 1 12 2.2 9.8 9.8 0 0 1 21.8 12 9.8 9.8 0 0 1 12 21.8zm5.4-7.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48a9 9 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.62.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>
+                </div>
+                <div><div class="label">WhatsApp · resposta mais rápida</div><div class="value">(51) 99180-3676</div></div>
+              </a>
+
+              <a class="contact-item" href="mailto:phdealmeida3@gmail.com">
+                <div class="ic green">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>
+                </div>
+                <div><div class="label">E-mail</div><div class="value">phdealmeida3@gmail.com</div></div>
+              </a>
+
+              <a class="contact-item" href="https://www.linkedin.com/in/pedrohenriquedealmeida3" target="_blank" rel="noopener">
+                <div class="ic blue">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+                </div>
+                <div><div class="label">LinkedIn</div><div class="value">in/pedrohenriquedealmeida3</div></div>
+              </a>
+
+              <a class="contact-item" href="https://github.com/0pedrohalmeida0" target="_blank" rel="noopener">
+                <div class="ic dark">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.3-3.3-.1-.3-.6-1.6.1-3.3 0 0 1-.3 3.3 1.2.9-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.2 3 .1 3.3.8.9 1.3 2 1.3 3.3 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6C20.6 22.3 24 17.8 24 12.5 24 5.9 18.6.5 12 .5z"/></svg>
+                </div>
+                <div><div class="label">GitHub · código aberto</div><div class="value">github.com/0pedrohalmeida0</div></div>
+              </a>
+            </div>
+          </div>
+
+          <form id="contact-form" action="https://formspree.io/f/mjgqzpnw" method="POST" novalidate>
+            <div class="hp-field" aria-hidden="true">
+              <label>Não preencha</label>
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required placeholder="Como se chama" autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required placeholder="seu@email.com" autocomplete="email" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="tipo">Tipo de projeto</label>
+              <select id="tipo" name="tipo">
+                <option>Landing page</option>
+                <option>Site institucional</option>
+                <option>Sistema web / PWA</option>
+                <option>ERP / CRM sob medida</option>
+                <option>Automação de processo</option>
+                <option>Outro / ainda estou explorando</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mensagem">Conte um pouco do projeto</label>
+              <textarea id="mensagem" name="mensagem" required placeholder="Qual problema você quer resolver? Tem prazo? Tem referência de algo que gostou?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+              Enviar mensagem
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+            <div id="form-status" role="alert" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Pedro Henrique de Almeida · Construído com Django, deploy em produção.</div>
+      <div class="footer-links">
+        <a href="https://github.com/0pedrohalmeida0" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/pedrohenriquedealmeida3" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:phdealmeida3@gmail.com">E-mail</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    (function () {
+      const btn = document.getElementById('menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }));
+    })();
+
+    // Reveal on scroll — with hard fallback so content always shows
+    (function () {
+      const items = document.querySelectorAll('.reveal');
+      if (!items.length) return;
+      if (!('IntersectionObserver' in window)) {
+        items.forEach(i => i.classList.add('in'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
+      items.forEach(i => io.observe(i));
+      // Safety net: after 1.2s force-show anything still hidden (PDFs, screenshot tools, JS off)
+      setTimeout(() => items.forEach(i => i.classList.add('in')), 1200);
+    })();
+
+    // Form submit
+    (function () {
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
+      if (!form) return;
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const data = new FormData(form);
+        btn.disabled = true;
+        btn.innerHTML = 'Enviando…';
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+          if (res.ok) {
+            status.className = 'ok';
+            status.textContent = '✓ Mensagem enviada. Retorno em até 24h.';
+            form.reset();
+          } else {
+            throw new Error('Falha');
+          }
+        } catch (err) {
+          status.className = 'err';
+          status.textContent = 'Não consegui enviar agora. Me chama no WhatsApp: (51) 99180-3676';
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = 'Enviar mensagem <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>';
+        }
+      });
+    })();
+  </script>
+
 </body>
-
-<script src="script.js"></script>
-
 </html>
