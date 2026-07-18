@@ -8,9 +8,6 @@ Landing page profissional do Pedro Henrique de Almeida.
 - Formulário via Formspree (`mjgqzpnw`)
 - Sem build step — abre direto no navegador
 
-## Deploy
-- **Netlify**: drag & drop a pasta, ou `netlify deploy --prod`
-
 ## Contato
 - WhatsApp: (51) 99180-3676
 - E-mail: phdealmeida3@gmail.com
