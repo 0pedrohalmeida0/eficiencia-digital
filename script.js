@@ -75,4 +75,3 @@
       });
     })();
 
-    print("Olá mundo, bem vindos a minha ladpage! Faça seu orçamento e mude o patamar do seu negócio 💛")
