@@ -144,9 +144,9 @@
     @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); } 80% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
 
     /* ---------- Section base ---------- */
-    section { padding: 80px 0; }
-    @media (min-width: 768px) { section { padding: 100px 0; } }
-    .section-head { max-width: 720px; margin-bottom: 56px; }
+    section { padding: 88px 0; }
+    @media (min-width: 768px) { section { padding: 108px 0; } }
+    .section-head { max-width: 720px; margin-bottom: 64px; }
     .section-head p.sub { margin-top: 14px; font-size: 1.0625rem; color: var(--ink-3); }
     .alt-bg { background: var(--surface); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
 

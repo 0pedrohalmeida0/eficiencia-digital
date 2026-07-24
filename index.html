@@ -360,6 +360,24 @@
             </div>
           </article>
 
+          <article class="proj reveal" style="--stripe:#0891b2;--icon-bg:#cffafe;--icon-fg:#0e7490;">
+            <div class="proj-head">
+              <div class="proj-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6M3 15h6M14 9h4M14 13h4M14 17h4"/></svg></div>
+              <span class="proj-tag"><span class="lang-pt">Indústria · MIT</span><span class="lang-en">Industry · MIT</span></span>
+            </div>
+            <h3 class="proj-title">Controle Patrimônio</h3>
+            <p class="proj-desc"><span class="lang-pt">Quiosque 24/7 para controle de patrimônio físico: retirada/devolução via crachá, 4 perfis, PWA fullscreen, Realtime. Aplicado em indústria local.</span><span class="lang-en">24/7 kiosk for physical asset control: check-in/out via badge, 4 roles, fullscreen PWA, Realtime. Deployed in a local industry.</span></p>
+            <div class="proj-stack">
+              <span class="chip">FastAPI</span><span class="chip">React 18</span><span class="chip">Supabase</span><span class="chip">PWA</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://github.com/0pedrohalmeida0/controle-patrimonio" target="_blank" rel="noopener" class="proj-link cta">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.3-3.3-.1-.3-.6-1.6.1-3.3 0 0 1-.3 3.3 1.2.9-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.2 3 .1 3.3.8.9 1.3 2 1.3 3.3 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6C20.6 22.3 24 17.8 24 12.5 24 5.9 18.6.5 12 .5z"/></svg>
+                <span class="lang-pt">Repositório (MIT)</span><span class="lang-en">Repo (MIT)</span>
+              </a>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
@@ -445,6 +463,39 @@
                 <div class="mod"><span class="mnum">03</span><span><span class="lang-pt">Publicação de conteúdo para alunos</span><span class="lang-en">Content publishing for students</span></span></div>
                 <div class="mod"><span class="mnum">04</span><span><span class="lang-pt">Admin Django com permissões por papel</span><span class="lang-en">Django admin with role permissions</span></span></div>
                 <div class="mod"><span class="mnum">05</span><span><span class="lang-pt">Deploy PythonAnywhere + WSGI</span><span class="lang-en">PythonAnywhere deploy + WSGI</span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CASE STUDY 2: CONTROLE PATRIMÔNIO ============ -->
+    <section style="background: var(--bg); padding-top: 60px;">
+      <div class="container">
+        <div class="case">
+          <div class="case-grid">
+            <div class="case-text">
+              <span class="case-tag"><span class="lang-pt">// Caso real · Indústria local</span><span class="lang-en">// Real case · Local industry</span></span>
+              <h2 style="margin-bottom: 18px;">Controle Patrimônio: <span class="accent"><span class="lang-pt">quiosque 24/7</span><span class="lang-en">24/7 kiosk</span></span> <span class="lang-pt">que substituiu a planilha da fábrica.</span><span class="lang-en">that replaced the factory's spreadsheet.</span></h2>
+              <p><span class="lang-pt">Indústria local com mais de 200 ativos circulando entre turnos (ferramentas, EPIs, coletores). O controle era planilha compartilhada — desatualizada, sem histórico confiável, e o almoxarifado perdia horas por semana reconciliando o que estava com quem.</span><span class="lang-en">A local industry with 200+ assets moving between shifts (tools, PPE, collectors). Tracking was a shared spreadsheet — outdated, no reliable history, and the warehouse lost hours every week reconciling who had what.</span></p>
+              <p><span class="lang-pt">Implementei um sistema com <strong>quiosque fullscreen em tablet</strong> na entrada do setor: o colaborador passa o crachá, registra retirada/devolução em segundos. Backoffice acompanha em tempo real, com alertas e indicadores. 4 perfis de usuário, RPCs atômicas que eliminam race conditions no Postgres, PWA instalável que roda offline.</span><span class="lang-en">I built a system with a <strong>fullscreen tablet kiosk</strong> at the sector entrance: the worker taps their badge, registers check-in/out in seconds. Backoffice watches in real time, with alerts and KPIs. 4 user roles, atomic Postgres RPCs that eliminate race conditions, installable PWA that runs offline.</span></p>
+              <div class="case-stats">
+                <div class="case-stat"><div class="n">200+</div><div class="l"><span class="lang-pt">Ativos controlados</span><span class="lang-en">Tracked assets</span></div></div>
+                <div class="case-stat"><div class="n">24/7</div><div class="l"><span class="lang-pt">Quiosque autônomo</span><span class="lang-en">Autonomous kiosk</span></div></div>
+                <div class="case-stat"><div class="n">4</div><div class="l"><span class="lang-pt">Perfis de acesso</span><span class="lang-en">Access roles</span></div></div>
+                <div class="case-stat"><div class="n">0</div><div class="l"><span class="lang-pt">Race conditions</span><span class="lang-en">Race conditions</span></div></div>
+              </div>
+            </div>
+            <div class="case-modules">
+              <h4><span class="lang-pt">// Módulos entregues</span><span class="lang-en">// Delivered modules</span></h4>
+              <div class="mod-list">
+                <div class="mod"><span class="mnum">01</span><span><span class="lang-pt">Quiosque fullscreen em tablet com scan de crachá</span><span class="lang-en">Fullscreen tablet kiosk with badge scan</span></span></div>
+                <div class="mod"><span class="mnum">02</span><span><span class="lang-pt">Realtime multi-usuário (Supabase CDC)</span><span class="lang-en">Multi-user realtime (Supabase CDC)</span></span></div>
+                <div class="mod"><span class="mnum">03</span><span><span class="lang-pt">4 perfis: admin, editor, leitor, kiosk</span><span class="lang-en">4 roles: admin, editor, reader, kiosk</span></span></div>
+                <div class="mod"><span class="mnum">04</span><span><span class="lang-pt">RPCs atômicas no Postgres (3 SECURITY DEFINER)</span><span class="lang-en">Atomic Postgres RPCs (3 SECURITY DEFINER)</span></span></div>
+                <div class="mod"><span class="mnum">05</span><span><span class="lang-pt">PWA fullscreen, i18n PT-BR plugado</span><span class="lang-en">Fullscreen PWA, i18n PT-BR plugged</span></span></div>
+                <div class="mod"><span class="mnum">06</span><span><span class="lang-pt">Stack: FastAPI + React 18 + Supabase + Docker</span><span class="lang-en">Stack: FastAPI + React 18 + Supabase + Docker</span></span></div>
               </div>
             </div>
           </div>
