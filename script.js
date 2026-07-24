@@ -75,3 +75,56 @@
       });
     })();
 
+
+// =============================================
+// Console banner pessoal
+// =============================================
+(function () {
+  // Helper: cria string de estilo CSS pro %c
+  const c = (color, bg = 'transparent', weight = '600', size = '13px') =>
+    `color: ${color}; background: ${bg}; padding: 3px 9px; border-radius: 5px; font-weight: ${weight}; font-size: ${size};`;
+  const sep = () => console.log('%c' + '─'.repeat(62), 'color: #10b981; font-weight: 300;');
+  const r = (txt, color, bg, w) => console.log('%c' + txt, c(color, bg, w));
+  const w = (txt, weight = '500') => console.log('%c' + txt, `color: #14171e; font-weight: ${weight}; font-size: 13px;`);
+
+  // Espaço inicial
+  console.log('%c', 'padding: 6px 0;');
+
+  // Header com nome + role
+  r('  Pedro Henrique de Almeida  ', '#ffffff', '#14171e', '700');
+  r('  Full Stack Python Developer  ', '#047857', '#d1fae5', '600');
+  sep();
+
+  // Pitch
+  w('   ✦ Sistemas sob medida · não templates');
+  w('   ✦ Da landing page ao ERP · tudo calibrado pra você');
+  sep();
+
+  // Canais de contato
+  r(' → GitHub   ', '#ffffff', '#1e293b', '600'); w('  github.com/0pedrohalmeida0');
+  r(' → LinkedIn ', '#ffffff', '#0077b5', '600'); w('  in/pedrohenriquedealmeida3');
+  r(' → WhatsApp ', '#ffffff', '#25d366', '600'); w('  (51) 99180-3676');
+  r(' → E-mail   ', '#ffffff', '#0ea5e9', '600'); w('  phdealmeida3@gmail.com');
+  sep();
+
+  // Dica interativa
+  r(' 💡 Dica  ', '#92400e', '#fef3c7', '700'); w('  digite  pedro.hire()  pra começar', '500');
+  console.log('%c', 'padding: 6px 0;');
+
+  // Easter egg: objeto global 'pedro' com stats reais
+  window.pedro = {
+    name: 'Pedro Henrique de Almeida',
+    role: 'Full Stack Python Developer',
+    location: 'Rio Grande do Sul · Brasil',
+    stack: ['Python', 'Django', 'Flask', 'FastAPI', 'React 18', 'PostgreSQL', 'Supabase'],
+    projects: 7,
+    tests: 123,
+    available: true,
+    hire() {
+      console.log('%c✓ Vamos conversar!', 'color: #047857; font-weight: 700; font-size: 14px;');
+      console.log('%c → WhatsApp: https://wa.me/5551991803676', 'color: #25d366; font-weight: 600;');
+      console.log('%c → E-mail:   phdealmeida3@gmail.com', 'color: #0ea5e9; font-weight: 600;');
+      return 'Aceitando projetos';
+    }
+  };
+})();
